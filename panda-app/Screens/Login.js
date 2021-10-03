@@ -35,7 +35,7 @@ import {View} from 'react-native';
 const {brand, darkLight, primary} = Colors;
 
 
-const Login = () => {
+const Login = ({navigation}) => {
         const [hidePassword, setHidePassword] = useState(true);
 
     return(
@@ -76,14 +76,13 @@ const Login = () => {
                         hidePassword={hidePassword}
                         setHidePassword={setHidePassword}
                     />
-                    <MsgBox> ... </MsgBox>
-                    <StyledButton onPress={handleSubmit}>
+                    <StyledButton onPress={() => navigation.navigate('Welcome')}>
                         <ButtonText>
                             Entrar
                         </ButtonText>
                     </StyledButton>
                     <br/>
-                    <StyledButton google={true} onPress={handleSubmit}>
+                    <StyledButton google={true} onPress={() => navigation.navigate('Welcome')}>
                         <Fontisto name="google" color={primary} size={25}/>
                         <ButtonText google={true}>
                             Entrar com Google
@@ -91,7 +90,7 @@ const Login = () => {
                     </StyledButton>
                     <ExtraView>
                         <ExtraText> Não possui uma conta?</ExtraText>
-                        <TextLink>
+                        <TextLink onPress={() => navigation.navigate('SignUp')}>
                             <TextLinkContent> Cadastrar </TextLinkContent>
                         </TextLink>
                     </ExtraView>

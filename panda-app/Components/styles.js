@@ -12,11 +12,12 @@ export const Colors = {
     secondary:"#e5e7eb",
     third: "#1f2937",
     darkLight: "#9ca3af",
-    brand: "#07da63"
+    brand: "#07da63",
+    btnred: "#ed2939"
 
 };
 
-const { primary, secondary, third, darkLight, brand } = Colors;
+const { primary, secondary, third, darkLight, brand, btnred } = Colors;
 
 export const StyledContainer = styled.View`
     flex: 1;
@@ -38,16 +39,19 @@ export const WelcomeContainer = styled(InnerContainer)`
 `;
 
 export const PageLogo = styled.Image`
-    width: 150px;
-    height: 100px;
+    width: 120px;
+    height: 80px;
+    margin-top: 40px;
+    max-width: 100%;
+    max-height: 100%;
 `;
 
 export const Avatar = styled.Image`
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     margin: auto;
-    border-radius: 50px;
-    border-width: 3px;
+    border-radius: 65px;
+    border-width: 6px;
     border-color: ${secondary};
     margin-bottom: 10px;
     margin-top: 10px;
@@ -62,6 +66,10 @@ export const PageTitle = styled.Text`
     font-weight: bold;
     color: ${brand};
     padding: 10px;
+
+    ${(props) => props.welcome &&`
+        font-size: 20px;
+    `}
 `;
 
 export const Subtitle = styled.Text`
@@ -70,6 +78,15 @@ export const Subtitle = styled.Text`
     letter-spacing: 1px;
     font-weight: bold;
     color: ${third};
+    padding: 10px;
+    white-space: nowrap;
+
+    ${(props) => props.welcome &&`
+        margin-bottom: 5px;
+        font-weight: normal;
+        font-size: 14px;
+        align-items: center;
+    `}
 
 `;
 
@@ -127,7 +144,14 @@ export const StyledButton = styled.TouchableOpacity`
         background-color: ${third};
         flex-direction: row;
         justify-content: center;
+
+    
     `}
+    ${(props) => props.danger == true && `
+        background-color: ${btnred};
+        flex-direction: row;
+        justify-content: center;
+    `}    
 
 `;
 

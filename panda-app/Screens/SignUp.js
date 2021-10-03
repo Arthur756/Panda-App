@@ -35,7 +35,7 @@ import {View} from 'react-native';
 const {brand, darkLight, primary} = Colors;
 
 
-const SignUp = () => {
+const SignUp = ({navigation}) => {
         const [hidePassword, setHidePassword] = useState(true);
 
     return(
@@ -66,7 +66,7 @@ const SignUp = () => {
                     <MyTextInput 
                         label=" Nome Completo"
                         icon="person"
-                        placeholder="André Gustavo"
+                        placeholder="Ana Chaves"
                         placeholderTextColor={darkLight}
                         onChangeText={handleChange('fullName')}
                         onBlur={handleChange('fullName')}
@@ -110,8 +110,7 @@ const SignUp = () => {
                         hidePassword={hidePassword}
                         setHidePassword={setHidePassword}
                     />
-                    <MsgBox> ... </MsgBox>
-                    <StyledButton onPress={handleSubmit}>
+                    <StyledButton onPress={() => navigation.navigate('Welcome')}>
                         <ButtonText>
                             Entrar
                         </ButtonText>
@@ -119,7 +118,7 @@ const SignUp = () => {
                     
                     <ExtraView>
                         <ExtraText> Já possui uma conta?</ExtraText>
-                        <TextLink>
+                        <TextLink onPress={() => navigation.navigate('Login')}>
                             <TextLinkContent> Login </TextLinkContent>
                         </TextLink>
                     </ExtraView>
