@@ -5,7 +5,6 @@ import {View} from 'react-native';
 
 const StatusBarHeight = Constants.statusBarHeight;
 
-
 //colors
 export const Colors = {
     primary:"#fff",
@@ -55,10 +54,15 @@ export const Avatar = styled.Image`
     border-color: ${secondary};
     margin-bottom: 10px;
     margin-top: 10px;
-
 `;
 
-
+export const Profile = styled.Image`
+    width: 100px;
+    height: 100px;
+    border-radius: 65px;
+    border-width: 6px;
+    border-color: ${secondary};
+`;
 
 export const PageTitle = styled.Text`
     font-size: 30px;

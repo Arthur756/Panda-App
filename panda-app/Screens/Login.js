@@ -81,7 +81,7 @@ const Login = ({navigation}) => {
                             Entrar
                         </ButtonText>
                     </StyledButton>
-                    <br/>
+                    {/* <Br/> */}
                     <StyledButton google={true} onPress={() => navigation.navigate('Welcome')}>
                         <Fontisto name="google" color={primary} size={25}/>
                         <ButtonText google={true}>
