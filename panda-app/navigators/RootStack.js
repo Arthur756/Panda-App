@@ -1,9 +1,10 @@
 import React from 'react';
+import { StyleSheet } from 'react-native';
 
 import { Colors } from './../Components/styles';
 const {primary, third} = Colors;
 
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
@@ -16,9 +17,17 @@ import Targets from './../Screens/Targets'
 
 const Stack = createNativeStackNavigator();
 
+const MyTheme ={
+    ...DefaultTheme,
+    colors: {
+        ...DefaultTheme.colors,
+        background: '#fff'
+    },
+};
+
 const RootStack = () => {
     return(
-        <NavigationContainer>
+        <NavigationContainer theme={MyTheme}>
             <Stack.Navigator
             screenOptions={{
                 headerShown: false
