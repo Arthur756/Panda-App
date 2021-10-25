@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 // Componentes
-import ProfileIcon from '../Components/ProfileIcon'
-import Target from '../Components/Target'
+import ProfileIcon from '../Components/ProfileIcon';
+import Target from '../Components/Target';
 
 const Targets = () => {
     return (
@@ -30,21 +31,49 @@ const Targets = () => {
                     <Text style={[styles.textFiltro]}>Filtro</Text>
                 </View>
                 <View style={[styles.targetsList]}>
-                    <Target color={'#43E09E'} title={'Viagem para inglaterra'}></Target>
-                    <Target color={'#7643E1'}></Target>
+                    <Target 
+                        color={'#c71585'} 
+                        title={'Viagem para inglaterra'}
+                        value={1500}
+                        totalTarget={3500}
+                    />
+                    <Target 
+                        color={'#ffd700'} 
+                        title={'Celular novo'}
+                        value={200}
+                        totalTarget={2000}
+                    />
+                    <Target 
+                        color={'#90ee90'} 
+                        title={'Harmonização facial'}
+                        value={500}
+                        totalTarget={1000}
+                    />
+                    <Target 
+                        color={'#8b0000'} 
+                        title={'Curso de design'}
+                        value={450}
+                        totalTarget={500}
+                    />
                 </View>
             </View>
+            <TouchableOpacity style={styles.createTargetBtn}>
+                <Icon name="plus" size={35} color={'#fff'}></Icon>
+            </TouchableOpacity>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    // Header
+    // Main
     main: {
+        flexDirection: 'column',
         paddingLeft: '1.5rem',
         paddingRight: '1.5rem',
-        height: 'vh%',
+        // backgroundColor: "pink"
     },
+
+    // Header
     header: {
         flexDirection: 'column',
         marginTop: '2rem',
@@ -93,8 +122,29 @@ const styles = StyleSheet.create({
         fontSize: '1.2rem',
     },
     targetsList: {
-        backgroundColor: 'pink',
+        // backgroundColor: 'green',
         marginTop: '1.5rem',
+    },
+
+    // Button
+    createTargetBtn: {
+        position: 'fixed',
+        alignSelf: 'flex-end',
+        right: 15,
+        bottom: 15,
+        backgroundColor: '#2DB071',
+        width: '5rem',
+        height: '5rem',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 100,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.4,
+        shadowRadius: 7,
     },
 })
 

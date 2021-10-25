@@ -70,7 +70,7 @@ const Home = ({navigation}) => {
                             </CardFooter>
                         </Card>
                     </Content>
-                    <Tabs />
+                    <Tabs navigation={navigation}/>
             </InnerContainer>
     );
 };
