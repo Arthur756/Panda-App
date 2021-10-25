@@ -76,13 +76,13 @@ const Login = ({navigation}) => {
                         hidePassword={hidePassword}
                         setHidePassword={setHidePassword}
                     />
-                    <StyledButton onPress={() => navigation.navigate('Welcome')}>
+                    <StyledButton onPress={() => navigation.navigate('Home')}>
                         <ButtonText>
                             Entrar
                         </ButtonText>
                     </StyledButton>
                     {/* <Br/> */}
-                    <StyledButton google={true} onPress={() => navigation.navigate('Welcome')}>
+                    <StyledButton google={true} onPress={() => navigation.navigate('Home')}>
                         <Fontisto name="google" color={primary} size={25}/>
                         <ButtonText google={true}>
                             Entrar com Google

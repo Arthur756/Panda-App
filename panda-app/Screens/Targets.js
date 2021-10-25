@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import ProfileIcon from '../Components/ProfileIcon';
 import Target from '../Components/Target';
 
-const Targets = () => {
+const Targets = ({navigation}) => {
     return (
         <View style={[styles.main]}>
             <View style={[styles.header]}>
@@ -14,7 +14,6 @@ const Targets = () => {
                     <Text style={[styles.textTitle]}>
                         Metas 
                     </Text>
-                    <ProfileIcon />
                 </View>
                 <View style={[styles.header_bottom]}> 
                     <Text style={[styles.textPoupanca]}>
@@ -25,6 +24,8 @@ const Targets = () => {
                     </Text>
                 </View>
             </View>
+            <ProfileIcon navigation={navigation}/>
+
             <View style={[styles.targets]}>
                 <View style={[styles.headerMetas]}>
                     <Text style={[styles.textSuasMetas]}>Suas metas</Text>
@@ -70,6 +71,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         paddingLeft: '1.5rem',
         paddingRight: '1.5rem',
+        paddingTop: '1.5rem'
         // backgroundColor: "pink"
     },
 
@@ -94,6 +96,7 @@ const styles = StyleSheet.create({
         fontSize: '2rem',
     },
     textPoupanca: {
+        marginTop: '1rem',
         fontFamily: 'monospace',
         color: '#AAAAAA',
         fontSize: '0.9rem'

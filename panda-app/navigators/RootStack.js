@@ -12,7 +12,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // screens
 import Login from './../Screens/Login'
 import SignUp from './../Screens/SignUp';
-import Welcome from './../Screens/Welcome';
+import Profile from '../Screens/Profile';
 import Home from './../Screens/Home';
 import Targets from './../Screens/Targets'
 
@@ -31,8 +31,18 @@ const headerStyle = {
         headerTransparent: true,
         headerStyle: {
             borderBottomWidth: 0,
-        },
+        }
 }
+
+const headerStyleHome = {
+    headerTitle: '',
+    headerTransparent: true,
+    headerStyle: {
+        borderBottomWidth: 0,
+    },
+    headerLeft: ()=> null
+}
+
 const RootStack = () => {
     return(
         <NavigationContainer theme={MyTheme}>
@@ -40,17 +50,19 @@ const RootStack = () => {
             screenOptions={{
                 headerShown: true
             }}
-            initialRouteName="Home"
+            initialRouteName="Login"
             >
                 <Stack.Screen 
                     name="Login" 
                     component={Login}
                     options={headerStyle}
+                    
                 />
                 <Stack.Screen 
                     name="Home" 
                     component={Home}
-                    options={headerStyle}
+                    options={headerStyleHome}
+                    
                 />
                 <Stack.Screen 
                     name="SignUp" 
@@ -58,8 +70,8 @@ const RootStack = () => {
                     options={headerStyle}
                 />
                 <Stack.Screen 
-                    name="Welcome" 
-                    component={Welcome}
+                    name="Profile" 
+                    component={Profile}
                     options={headerStyle}
                 />
                 <Stack.Screen 

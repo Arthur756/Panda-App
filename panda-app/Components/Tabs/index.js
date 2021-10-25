@@ -10,11 +10,6 @@ export default function Tabs({navigation}){
     return(
         <Container>
             <TabsContainer>
-                <TabItem onclick={() => navigation.navigate('Welcome')}>
-                    <Icon name="person" size={23} color="#07da63"/>
-                    <TabText>Perfil</TabText>
-                </TabItem>
-
                 <TabItem>
                     <Icon name="attach-money" size={23} color="#07da63"/>
                     <TabText>Carteira</TabText>

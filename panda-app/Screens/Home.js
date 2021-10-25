@@ -4,6 +4,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 // formik
 import {Formik} from 'formik';
 
+import ProfileIcon from '../Components/ProfileIcon';
+
 import Tabs from '../Components/Tabs';
 
 import { Content, Card, CardHeader, CardContent, CardFooter,
@@ -33,7 +35,8 @@ import {
     TextLink,
     TextLinkContent,
     WelcomeContainer,
-    Avatar
+    Avatar,
+    Profile
 
 } from '../Components/styles';
 
@@ -52,6 +55,7 @@ const Home = ({navigation}) => {
                     <PageLogo realizeMode="cover" source={require('./../assets/panda_logo.png')}/>
                     <PageTitle> Panda </PageTitle>
                     <PageTitle welcome={true}> Bem Vindo ao Panda! </PageTitle>
+                    <ProfileIcon navigation={navigation} />
                     <br/>
                     <br/>
                     <Content>

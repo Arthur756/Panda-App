@@ -37,7 +37,7 @@ import {View} from 'react-native';
 const {brand, darkLight, primary, btnred} = Colors;
 
 
-const Welcome = ({navigation}) => {
+const Profile = ({navigation}) => {
         const [hidePassword, setHidePassword] = useState(true);
 
     return(
@@ -87,4 +87,4 @@ const MyTextInput = ({label, icon, isPassword, hidePassword, setHidePassword, ..
     )
 }
 
-export default Welcome;
+export default Profile;
