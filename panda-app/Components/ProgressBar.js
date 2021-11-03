@@ -1,6 +1,11 @@
 import React from "react";
 import { View, Text } from "react-native";
 
+// Bibliotecas
+import InputRange from "react-input-range";
+import "react-input-range/lib/css/index.css";
+import { useState } from "react/cjs/react.development";
+
 const ProgressBar = (props) => {
   const { bgcolor, completed } = props;
 
@@ -37,8 +42,17 @@ const ProgressBar = (props) => {
     fontWeight: "500",
   };
 
+  const [val, setVal] = useState(10);
+
   return (
     <View style={containerStyles}>
+      {/* <InputRange
+        draggableTrack={true}
+        maxValue={100}
+        minValue={0}
+        value={val}
+        onChange={(x) => setVal(x)}
+      /> */}
       <View style={fillerStyles}>
         <View style={labelStyles}></View>
       </View>

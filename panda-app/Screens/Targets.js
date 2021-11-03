@@ -19,7 +19,6 @@ import ColorPicker from "react-native-wheel-color-picker";
 // Componentes
 import ProfileIcon from "../Components/ProfileIcon";
 import Target from "../Components/Target";
-import { color } from "react-native-reanimated";
 
 const Targets = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
