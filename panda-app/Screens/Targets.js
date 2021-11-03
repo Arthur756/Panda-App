@@ -8,18 +8,66 @@ import {
   StatusBar,
   Modal,
   TextInput,
+  FlatList,
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { useState } from "react/cjs/react.development";
+
+// Bibliotecas
+import Icon from "react-native-vector-icons/FontAwesome";
+import ColorPicker from "react-native-wheel-color-picker";
 
 // Componentes
 import ProfileIcon from "../Components/ProfileIcon";
 import Target from "../Components/Target";
+import { color } from "react-native-reanimated";
 
 const Targets = ({ navigation }) => {
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [targetTitle, setTargetTitle] = useState("");
+  const [targetValue, setTargetValue] = useState(0);
+  const [currentColor, setCurrentColor] = useState("");
+  const [targetList, setTargetList] = useState([
+    {
+      targetColor: "#c71585",
+      targetTitle: "Viagem para inglaterra",
+      value: 1500,
+      totalTarget: 3500,
+    },
+    {
+      targetColor: "#ffd700",
+      targetTitle: "Celular novo",
+      value: 200,
+      totalTarget: 2000,
+    },
+    {
+      targetColor: "#8b0000",
+      targetTitle: "Curso de trader",
+      value: 450,
+      totalTarget: 500,
+    },
+  ]);
 
-  function createTarget() {}
+  const renderItem = ({ item }) => (
+    <Target
+      color={item.targetColor}
+      title={item.targetTitle}
+      value={item.value}
+      totalTarget={item.totalTarget}
+    />
+  );
+  function handleChangeTitle(event) {
+    setTargetTitle(event.target.value);
+  }
+
+  function handleChangeValue(event) {
+    setTargetValue(event.target.value);
+  }
+
+  function createTarget(targetColor, targetTitle, value, totalTarget) {
+    const newTarget = { targetColor, targetTitle, value, totalTarget };
+    const newArray = [...targetList, newTarget];
+    setTargetList(newArray);
+  }
 
   return (
     <View style={[styles.main]}>
@@ -43,16 +91,28 @@ const Targets = ({ navigation }) => {
             <TextInput
               style={styles.modalInput}
               placeholder="Ex.: Viagem para londres"
+              onChange={handleChangeTitle}
             />
-            <Text style={styles.modalText}>Valor</Text>
+            <Text style={styles.modalText}>Meta</Text>
             <TextInput
               style={styles.modalInput}
               placeholder="Ex.: 3100,00"
               keyboardType="numeric"
+              onChange={handleChangeValue}
             />
-            <TouchableOpacity style={styles.modalButton}
-              onPress={() => setModalVisible(false)}>
-                <Text style={styles.modalButtonText}>Adicionar</Text>
+            <ColorPicker
+              // color={targetColor}
+              onColorChange={(c) => setCurrentColor(c)}
+              swatches={false}
+            />
+            <TouchableOpacity
+              style={styles.modalButton}
+              onPress={() => {
+                setModalVisible(false);
+                createTarget(currentColor, targetTitle, 100, targetValue);
+              }}
+            >
+              <Text style={styles.modalButtonText}>Adicionar</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -76,32 +136,11 @@ const Targets = ({ navigation }) => {
         style={[styles.targets]}
         showsHorizontalScrollIndicator={false}
       >
-        <View style={[styles.targetsList]}>
-          <Target
-            color={"#c71585"}
-            title={"Viagem para inglaterra"}
-            value={1500}
-            totalTarget={3500}
-          />
-          <Target
-            color={"#ffd700"}
-            title={"Celular novo"}
-            value={200}
-            totalTarget={2000}
-          />
-          <Target
-            color={"#90ee90"}
-            title={"Harmonização facial"}
-            value={500}
-            totalTarget={1000}
-          />
-          <Target
-            color={"#8b0000"}
-            title={"Curso de design"}
-            value={450}
-            totalTarget={500}
-          />
-        </View>
+        <FlatList
+          style={[styles.targetsList]}
+          data={targetList}
+          renderItem={renderItem}
+        ></FlatList>
       </ScrollView>
       <TouchableOpacity
         style={styles.createTargetBtn}
@@ -130,12 +169,12 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
-      width: 0,
-      height: 2,
+      width: -2,
+      height: 4,
     },
     shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+    shadowRadius: 14,
+    elevation: 10,
   },
 
   modalTitle: {
@@ -152,7 +191,7 @@ const styles = StyleSheet.create({
   },
 
   modalInput: {
-    color: "#ddd",
+    color: "#111",
     width: "100%",
     fontSize: 14,
     backgroundColor: "#eee",
@@ -170,20 +209,19 @@ const styles = StyleSheet.create({
   },
 
   modalButton: {
-    marginTop: 10,
-    width: '100%',
-    alignItems: 'center',
-    backgroundColor: '#2DB071',
+    marginTop: 30,
+    width: "100%",
+    alignItems: "center",
+    backgroundColor: "#2DB071",
     padding: 10,
     borderRadius: 20,
   },
 
   modalButtonText: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    fontWeight: '500'
+    fontWeight: "500",
   },
-
 
   // Main
   main: {
