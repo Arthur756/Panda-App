@@ -51,13 +51,11 @@ const Home = ({navigation}) => {
 
     return(
         
-            <InnerContainer>
+        <InnerContainer>
+                <ProfileIcon navigation={navigation} />
                     <PageLogo realizeMode="cover" source={require('./../assets/panda_logo.png')}/>
-                    <PageTitle> Panda </PageTitle>
+                    {/* <PageTitle> Panda </PageTitle> */}
                     <PageTitle welcome={true}> Bem Vindo ao Panda! </PageTitle>
-                    <ProfileIcon navigation={navigation} />
-                    <br/>
-                    <br/>
                     <Content>
                         <Card>
                             <CardHeader>

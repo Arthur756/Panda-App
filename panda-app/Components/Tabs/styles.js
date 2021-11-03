@@ -4,7 +4,8 @@ export const Container = styled.View`
     flex: 1;
     height: 100px;
     margin-top: 150px;
-    width: 290px;
+    width: 332px;
+
 `;
 
 export const TabsContainer = styled.ScrollView.attrs({
@@ -41,9 +42,8 @@ export const Content = styled.View`
 `;
 
 export const Card = styled.View`
-    margin-top: 40px;
+    // margin-top: 5rem;
     box-shadow: 4px 4px 9px #D3D3D3;
-    //flex: 3;
     height: 300px;
     background: #fff;
     //border: solid;

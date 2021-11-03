@@ -12,8 +12,8 @@ const Target = (props) => {
 
     return (
         <View style={styles.card}>
-            <View style={[styles.circle, {backgroundColor: props.color }]} />
-            <View style={styles.cardText}>
+            <View style={styles.cardHeader}>
+                <View style={[styles.circle, {backgroundColor: props.color }]} />
                 <Text style={styles.textTitle}>{props.title}</Text>
             </View>
             <ProgressBar bgcolor={props.color} completed={completed} havingTarget={value} totalTarget={totalTarget}/>
@@ -26,27 +26,27 @@ const styles = StyleSheet.create({
     card: {
         flexDirection:'column',
         backgroundColor: '#EEEBEB',
-        height: '10rem',
-        borderRadius: '1.5rem',
-        marginBottom: '1.8rem',
-
+        height: 'auto',
+        padding: 24,
+        borderRadius: 30,
+        marginBottom: 30,
     },
     circle: {
-        position: 'absolute',
-        borderRadius: '15rem',
-        width: '3rem',
-        height: '3rem',
-        top: '2rem',
-        left: '2rem'
+        borderRadius: 50,
+        width: 40,
+        height: 40,
     },
-
-    cardText: {
-        marginLeft: '7rem',
-        marginTop: '2.5rem',
+    cardHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        // marginTop: 40,
     },
 
     textTitle: {
-        fontSize: '1.3rem'
+        marginLeft: 28,
+        fontWeight: '400',
+        fontSize: 18,
+
     }
 
 })

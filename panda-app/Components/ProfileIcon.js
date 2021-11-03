@@ -1,15 +1,10 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet, Image } from 'react-native';
-
-import {
-    Colors,
-    Profile
-} from './styles';
+import { TouchableOpacity, StyleSheet, View, Image } from 'react-native';
 
 const ProfileIcon = ({navigation}) => {
     return(
-        <TouchableOpacity style={styles.profileIcon} onPress={()=> navigation.navigate('Profile')}>
-            <Profile source={require('../assets/perfil1.jpg')} />
+        <TouchableOpacity style={styles.profileIcon} onPress={()=> navigation.navigate('Profile')} source={require('../assets/perfil1.jpg')}>
+            <Image style={styles.profile} source={require('../assets/perfil1.jpg')} />
         </TouchableOpacity>
     )
 }
@@ -17,8 +12,15 @@ const ProfileIcon = ({navigation}) => {
 const styles = StyleSheet.create({
     profileIcon: {
         position: 'absolute',
-        right: '1.5rem',
-        top: '1.5rem',
+        right: 28,
+        top: 35,
+    },
+    profile: {
+        width: 80,
+        height: 80,
+        borderRadius: 50,
+        borderWidth: 6,
+        borderColor: '#cccccc'
     }
 })
 export default ProfileIcon;

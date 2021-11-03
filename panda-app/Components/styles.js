@@ -56,20 +56,13 @@ export const Avatar = styled.Image`
     margin-top: 10px;
 `;
 
-export const Profile = styled.Image`
-    width: 100px;
-    height: 100px;
-    border-radius: 65px;
-    border-width: 6px;
-    border-color: ${secondary};
-`;
-
 export const PageTitle = styled.Text`
     font-size: 30px;
     text-align: center;
     font-weight: bold;
     color: ${brand};
     padding: 10px;
+    margin-bottom: 2rem;
 
     ${(props) => props.welcome &&`
         font-size: 20px;

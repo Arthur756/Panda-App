@@ -51,8 +51,7 @@ const Profile = ({navigation}) => {
                 <WelcomeContainer>
                     <StyledFormArea>
                     <Avatar realizeMode="cover" source={require('./../assets/perfil1.jpg')}/>
-                    <br/>
-                    <br/>
+
                     <PageTitle welcome={true}> Ana Chaves </PageTitle>
                     <Subtitle welcome={true}> anachaves282@gmail.com </Subtitle>
                     <Subtitle welcome={true}> 027.282.926-34 </Subtitle>
