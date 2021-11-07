@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
   flag: {
     position: "absolute",
-    bottom: 4,
+    bottom: 6,
     right: 25,
     width: 48,
     height: 48,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   textCard3: {
     color: "white",
-    fontSize: 35,
+    fontSize: 32,
     // marginTop: 5,
     marginLeft: 22,
     fontWeight: "500",
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   textCard4: {
     color: "white",
     fontSize: 16,
-    marginTop: 25,
+    marginTop: 28,
     marginLeft: 22,
     fontWeight: "400",
   },

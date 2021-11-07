@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
   tabsContainer: {
     width: "100%",
     height: 160,
-    marginBottom: 25,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -77,19 +76,20 @@ const styles = StyleSheet.create({
   tabText: {
     position: "absolute",
     color: "white",
-    marginTop: 110,
+    bottom: -25,
   },
   tabImage: {
     height: 40,
     width: 40,
   },
   reports: {
-    marginHorizontal: "auto",
+    // marginHorizontal: "auto",
     backgroundColor: "white",
     borderRadius: 40,
     alignItems: "center",
     justifyContent: "center",
-    width: 325,
+    // width: 'auto',
+    margin: 25,
     height: 250,
   },
   reportImage: {

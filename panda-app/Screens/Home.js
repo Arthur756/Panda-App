@@ -16,15 +16,16 @@ const Home = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
 
   return (
-      <ImageBackground style={styles.background} source={backgroundImage}>
-        <View style={styles.header}>
-          <ProfileIcon navigation={navigation} />
-          <Text style={styles.headerText}>Olá,</Text>
-          <Text style={styles.headerTitle}>Ana Chaves</Text>
-        </View>
-        <Card />
-        <Tabs navigation={navigation} />
-      </ImageBackground>
+    <View style={styles.main}>
+      <View style={styles.background}></View>
+      <View style={styles.header}>
+        <ProfileIcon navigation={navigation} />
+        <Text style={styles.headerText}>Olá,</Text>
+        <Text style={styles.headerTitle}>Ana Chaves</Text>
+      </View>
+      <Card />
+      <Tabs navigation={navigation} />
+    </View>
   );
 };
 
@@ -33,8 +34,13 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   background: {
+    position: "absolute",
+    backgroundColor: "black",
+    borderTopRightRadius: 28,
+    borderTopLeftRadius: 28,
     width: "100%",
-    height: "100%",
+    height: 600,
+    marginTop: 240,
     flex: 1,
   },
   header: {
@@ -48,11 +54,10 @@ const styles = StyleSheet.create({
     marginBottom: 0,
   },
   headerTitle: {
-    fontSize: 24,
-    fontWeight: "500",
+    fontSize: 26,
+    fontWeight: "700",
     marginTop: -10,
   },
-
 });
 
 export default Home;
