@@ -63,33 +63,33 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 22,
     marginTop: 22,
-    fontWeight: 500,
+    fontWeight: "500",
   },
   textCard2: {
     color: "white",
     fontSize: 14,
     marginLeft: 22,
-    fontWeight: 300,
+    fontWeight: "300",
   },
   textCard3: {
     color: "white",
     fontSize: 35,
     // marginTop: 5,
     marginLeft: 22,
-    fontWeight: 500,
+    fontWeight: "500",
   },
   textCard4: {
     color: "white",
     fontSize: 16,
     marginTop: 25,
     marginLeft: 22,
-    fontWeight: 400,
+    fontWeight: "400",
   },
   textCard5: {
     color: "white",
     fontSize: 14,
     marginLeft: 22,
-    fontWeight: 300,
+    fontWeight: "300",
   },
 });
 

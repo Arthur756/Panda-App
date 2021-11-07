@@ -44,12 +44,12 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 20,
-    fontWeight: 400,
+    fontWeight: "400",
     marginBottom: 0,
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: 500,
+    fontWeight: "500",
     marginTop: -10,
   },
 
