@@ -14,8 +14,8 @@ import Login from './../Screens/Login'
 import SignUp from './../Screens/SignUp';
 import Profile from '../Screens/Profile';
 import Home from './../Screens/Home';
-import Targets from './../Screens/Targets'
-
+import Targets from './../Screens/Targets';
+import Reports from './../Screens/Reports';
 const Stack = createNativeStackNavigator();
 
 const MyTheme ={
@@ -50,7 +50,7 @@ const RootStack = () => {
             screenOptions={{
                 headerShown: true
             }}
-            initialRouteName="Targets"
+            initialRouteName="Login"
             >
                 <Stack.Screen 
                     name="Login" 
@@ -77,6 +77,11 @@ const RootStack = () => {
                 <Stack.Screen 
                     name="Targets" 
                     component={Targets}
+                    options={headerStyle}
+                />
+                <Stack.Screen 
+                    name="Reports" 
+                    component={Reports}
                     options={headerStyle}
                 />
             </Stack.Navigator>
