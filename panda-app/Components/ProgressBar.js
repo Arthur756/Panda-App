@@ -2,8 +2,8 @@ import React from "react";
 import { View, Text } from "react-native";
 
 // Bibliotecas
-import InputRange from "react-input-range";
-import "react-input-range/lib/css/index.css";
+//åimport InputRange from "react-input-range";
+//import "react-input-range/lib/css/index.css";
 import { useState } from "react/cjs/react.development";
 
 const ProgressBar = (props) => {
