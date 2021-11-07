@@ -1,98 +1,58 @@
-import React, {userState, useState} from 'react';
-
-import Icon from 'react-native-vector-icons/MaterialIcons';
-// formik
-import {Formik} from 'formik';
-
-import ProfileIcon from '../Components/ProfileIcon';
-
-import Tabs from '../Components/Tabs';
-
-import { Content, Card, CardHeader, CardContent, CardFooter,
-Title, Description } from '../Components/Tabs/styles';
+import React, { useState } from "react";
+import { View, Text, StyleSheet, ImageBackground, Image } from "react-native";
 
 //Icons
-import {Octicons, Ionicons, Fontisto} from '@expo/vector-icons';
+import Icon from "react-native-vector-icons/MaterialIcons";
 
+// Components
+import Card from "../Components/Card";
+import ProfileIcon from "../Components/ProfileIcon";
+import Tabs from "../Components/Tabs.js";
 
-import {
-    StyledContainer,
-    InnerContainer,
-    PageLogo,
-    PageTitle,
-    Subtitle,
-    StyledFormArea,
-    LeftIcon,
-    StyledInputLabel,
-    StyledTextInput,
-    RightIcon,
-    StyledButton,
-    ButtonText,
-    Colors,
-    MsgBox,
-    ExtraView,
-    ExtraText,
-    TextLink,
-    TextLinkContent,
-    WelcomeContainer,
-    Avatar,
-    Profile
+// Images
+import backgroundImage from "../assets/menu-background.png";
 
-} from '../Components/styles';
+const Home = ({ navigation }) => {
+  const [hidePassword, setHidePassword] = useState(true);
 
-import {View} from 'react-native';
-
-//colors
-const {brand, darkLight, primary, btnred} = Colors;
-
-
-const Home = ({navigation}) => {
-        const [hidePassword, setHidePassword] = useState(true);
-
-    return(
-        
-        <InnerContainer>
-                <ProfileIcon navigation={navigation} />
-                    <PageLogo realizeMode="cover" source={require('./../assets/panda_logo.png')}/>
-                    {/* <PageTitle> Panda </PageTitle> */}
-                    <PageTitle welcome={true}> Bem Vindo ao Panda! </PageTitle>
-                    <Content>
-                        <Card>
-                            <CardHeader>
-                                <Icon name="account-balance-wallet" size={34} color="#07da63"/>
-                            </CardHeader>
-
-                            <CardContent>
-                                <Title>Carteira Virtual</Title>
-                                <Description>R$ 12.452,85</Description>
-                            </CardContent>
-
-                            <CardFooter>
-                                R$ 130,90 foram adicionados a sua carteira recentemente
-                            </CardFooter>
-                        </Card>
-                    </Content>
-                    <Tabs navigation={navigation}/>
-            </InnerContainer>
-    );
+  return (
+      <ImageBackground style={styles.background} source={backgroundImage}>
+        <View style={styles.header}>
+          <ProfileIcon navigation={navigation} />
+          <Text style={styles.headerText}>Olá,</Text>
+          <Text style={styles.headerTitle}>Ana Chaves</Text>
+        </View>
+        <Card />
+        <Tabs navigation={navigation} />
+      </ImageBackground>
+  );
 };
 
-const MyTextInput = ({label, icon, isPassword, hidePassword, setHidePassword, ...props}) => {
-    return(
-        <View>
-            <LeftIcon>
-                <Octicons name={icon} size={30} color={brand}/>
-            </LeftIcon>
-            <StyledInputLabel>{label}</StyledInputLabel>
-            <StyledTextInput {...props}/>
-            {isPassword && (
-                <RightIcon onPress={() => setHidePassword(!hidePassword)}>
-                    <Ionicons name = {hidePassword ? 'md-eye-off' : 'md-eye'} size={27} color={darkLight} />
-                </RightIcon>
-            )}
+const styles = StyleSheet.create({
+  main: {
+    backgroundColor: "white",
+  },
+  background: {
+    width: "100%",
+    height: "100%",
+    flex: 1,
+  },
+  header: {
+    padding: 25,
+    paddingTop: 50,
+    height: 140,
+  },
+  headerText: {
+    fontSize: 20,
+    fontWeight: 400,
+    marginBottom: 0,
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: 500,
+    marginTop: -10,
+  },
 
-        </View>
-    )
-}
+});
 
 export default Home;
