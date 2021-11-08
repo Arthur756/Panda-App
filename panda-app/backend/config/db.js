@@ -7,7 +7,7 @@ mongoose
     useUnifiedTopology: true,
 })
 .then(() => {
-    console.log("DB Connected");
+    console.log("Banco de Dados conectado");
 })
 .catch((err) => console.log(err));
 
