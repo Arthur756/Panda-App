@@ -9,9 +9,6 @@ import Card from "../Components/Card";
 import ProfileIcon from "../Components/ProfileIcon";
 import Tabs from "../Components/Tabs.js";
 
-// Images
-import backgroundImage from "../assets/menu-background.png";
-
 const Home = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
 

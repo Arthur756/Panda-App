@@ -23,7 +23,7 @@ import Target from "../Components/Target";
 const Targets = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [targetTitle, setTargetTitle] = useState("");
-  const [targetValue, setTargetValue] = useState(0);
+  const [targetValue, setTargetValue] = useState();
   const [currentColor, setCurrentColor] = useState("");
   const [targetList, setTargetList] = useState([
     {
@@ -63,9 +63,16 @@ const Targets = ({ navigation }) => {
   }
 
   function createTarget(targetColor, targetTitle, value, totalTarget) {
-    const newTarget = { targetColor, targetTitle, value, totalTarget };
-    const newArray = [...targetList, newTarget];
-    setTargetList(newArray);
+    if (totalTarget == null || targetTitle == null) {
+      return alert("Preencha todos os campos!");
+    } else {
+      const newTarget = { targetColor, targetTitle, value, totalTarget };
+      const newArray = [...targetList, newTarget];
+      setModalVisible(false);
+      setTargetList(newArray);
+      setTargetTitle();
+      setTargetValue();
+    }
   }
 
   return (
@@ -107,8 +114,7 @@ const Targets = ({ navigation }) => {
             <TouchableOpacity
               style={styles.modalButton}
               onPress={() => {
-                setModalVisible(false);
-                createTarget(currentColor, targetTitle, 100, targetValue);
+                createTarget(currentColor, targetTitle, 0, targetValue);
               }}
             >
               <Text style={styles.modalButtonText}>Adicionar</Text>
