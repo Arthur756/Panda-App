@@ -145,6 +145,8 @@ const Targets = ({ navigation }) => {
           style={[styles.targetsList]}
           data={targetList}
           renderItem={renderItem}
+          keyExtractor={(item, index) => index.toString()}
+          showsHorizontalScrollIndicator={false}
         ></FlatList>
       </ScrollView>
       <TouchableOpacity
