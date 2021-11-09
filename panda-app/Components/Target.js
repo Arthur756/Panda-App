@@ -5,18 +5,25 @@ import { View, Text, StyleSheet } from "react-native";
 import ProgressBar from "./ProgressBar";
 
 const Target = (props) => {
-  const [value, setValue] = useState(props.value);
+  const [completed, setCompleted] = useState(false);
+
+  function changeValue(value) {
+    props.changeTarget(props.id, props.color, props.title, value, props.totalTarget);
+    if (value == props.totalTarget) setCompleted(true);
+    else setCompleted(false);
+  }
 
   return (
-    <View style={styles.card}>
+    <View style={completed ? styles.cardComplete : styles.card}>
       <View style={styles.cardHeader}>
         <View style={[styles.circle, { backgroundColor: props.color }]} />
         <Text style={styles.textTitle}>{props.title}</Text>
       </View>
       <ProgressBar
         bgcolor={props.color}
-        havingTarget={value}
+        havingTarget={props.value}
         totalTarget={props.totalTarget}
+        changeValue={changeValue}
       />
     </View>
   );
@@ -25,11 +32,25 @@ const Target = (props) => {
 const styles = StyleSheet.create({
   card: {
     flexDirection: "column",
+    backgroundColor: "#FFF",
+    borderWidth: 3,
+    borderColor: "#FFF",
+    height: "auto",
+    padding: 20,
+    borderRadius: 25,
+    marginBottom: 25,
+  },
+  cardComplete: {
+    flexDirection: "column",
     backgroundColor: "#EEEBEB",
     height: "auto",
-    padding: 24,
-    borderRadius: 30,
-    marginBottom: 30,
+    borderWidth: 3,
+    borderColor: "#bbb",
+    borderStyle: "dashed",
+    opacity: 0.6,
+    padding: 20,
+    borderRadius: 25,
+    marginBottom: 25,
   },
   circle: {
     borderRadius: 50,
@@ -44,7 +65,7 @@ const styles = StyleSheet.create({
 
   textTitle: {
     marginLeft: 28,
-    fontWeight: "400",
+    fontWeight: "500",
     fontSize: 18,
   },
 });

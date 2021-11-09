@@ -25,21 +25,25 @@ const Targets = ({ navigation }) => {
   const [targetTitle, setTargetTitle] = useState("");
   const [targetValue, setTargetValue] = useState();
   const [currentColor, setCurrentColor] = useState("");
+  const [id, setId] = useState(0);
   const [targetList, setTargetList] = useState([
     {
-      targetColor: "#c71585",
+      id: 10,
+      color: "#c71585",
       targetTitle: "Viagem para inglaterra",
       value: 1500,
       totalTarget: 3500,
     },
     {
-      targetColor: "#ffd700",
+      id: 11,
+      color: "#ffd700",
       targetTitle: "Celular novo",
       value: 200,
       totalTarget: 2000,
     },
     {
-      targetColor: "#8b0000",
+      id: 12,
+      color: "#8b0000",
       targetTitle: "Curso de trader",
       value: 450,
       totalTarget: 500,
@@ -48,10 +52,12 @@ const Targets = ({ navigation }) => {
 
   const renderItem = ({ item }) => (
     <Target
-      color={item.targetColor}
+      id={item.id}
+      color={item.color}
       title={item.targetTitle}
       value={item.value}
       totalTarget={item.totalTarget}
+      changeTarget={changeTarget}
     />
   );
   function handleChangeTitle(event) {
@@ -62,13 +68,26 @@ const Targets = ({ navigation }) => {
     setTargetValue(event.target.value);
   }
 
-  function createTarget(targetColor, targetTitle, value, totalTarget) {
+  function changeTarget(id, color, targetTitle, value, totalTarget) {
+    const newArray = [...targetList];
+    var index = newArray
+      .map(function (elemento) {
+        return elemento.id;
+      })
+      .indexOf(id);
+    newArray[index] = { id, color, targetTitle, value, totalTarget };
+    console.log(newArray)
+    setTargetList(newArray);
+  }
+
+  function createTarget(id, color, targetTitle, value, totalTarget) {
     if (totalTarget == null || targetTitle == null) {
       return alert("Preencha todos os campos!");
     } else {
-      const newTarget = { targetColor, targetTitle, value, totalTarget };
+      const newTarget = { id, color, targetTitle, value, totalTarget };
       const newArray = [...targetList, newTarget];
       setModalVisible(false);
+      setId(id + 1);
       setTargetList(newArray);
       setTargetTitle();
       setTargetValue();
@@ -114,7 +133,7 @@ const Targets = ({ navigation }) => {
             <TouchableOpacity
               style={styles.modalButton}
               onPress={() => {
-                createTarget(currentColor, targetTitle, 0, targetValue);
+                createTarget(id, currentColor, targetTitle, 0, targetValue);
               }}
             >
               <Text style={styles.modalButtonText}>Adicionar</Text>
@@ -233,6 +252,7 @@ const styles = StyleSheet.create({
   // Main
   main: {
     flex: 1,
+    backgroundColor: "#dddddd",
     flexDirection: "column",
     paddingLeft: 25,
     paddingRight: 25,
@@ -270,12 +290,6 @@ const styles = StyleSheet.create({
     color: "#000000",
     fontSize: 24,
   },
-
-  // Targets
-  targets: {
-    height: "100%",
-    paddingBottom: 70,
-  },
   headerMetas: {
     marginTop: 50,
     marginBottom: 10,
@@ -291,9 +305,15 @@ const styles = StyleSheet.create({
     color: "#333333",
     fontSize: 16,
   },
+
+  // Targets
+  targets: {
+    height: "100%",
+    // paddingBottom: 70,
+  },
   targetsList: {
     // backgroundColor: 'green',
-    paddingBottom: 65,
+    paddingBottom: 85,
     paddingTop: 10,
   },
 
