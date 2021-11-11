@@ -46,7 +46,7 @@ const Tabs = ({ navigation }) => {
       <TouchableOpacity
         style={styles.reports}
         onPress={() => {
-          navigation.navigate("");
+          navigation.navigate("Reports");
         }}
       >
         <Image style={styles.reportImage} source={require("../assets/reports.png")} />

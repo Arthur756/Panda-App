@@ -76,7 +76,7 @@ const Targets = ({ navigation }) => {
       })
       .indexOf(id);
     newArray[index] = { id, color, targetTitle, value, totalTarget };
-    console.log(newArray)
+    console.log(newArray);
     setTargetList(newArray);
   }
 
@@ -141,6 +141,7 @@ const Targets = ({ navigation }) => {
           </View>
         </View>
       </Modal>
+
       <View style={[styles.header]}>
         <View style={[styles.header_top]}>
           <Text style={[styles.textTitle]}>Metas</Text>
@@ -150,7 +151,7 @@ const Targets = ({ navigation }) => {
           <Text style={[styles.textSaldo]}>R$ 3.500,00</Text>
         </View>
       </View>
-      <ProfileIcon navigation={navigation} />
+      {/* <ProfileIcon navigation={navigation} /> */}
 
       <View style={[styles.headerMetas]}>
         <Text style={[styles.textSuasMetas]}>Suas metas</Text>
@@ -252,7 +253,7 @@ const styles = StyleSheet.create({
   // Main
   main: {
     flex: 1,
-    backgroundColor: "#dddddd",
+    backgroundColor: "#EEEEEE",
     flexDirection: "column",
     paddingLeft: 25,
     paddingRight: 25,

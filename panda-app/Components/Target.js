@@ -14,7 +14,7 @@ const Target = (props) => {
   }
 
   return (
-    <View style={completed ? styles.cardComplete : styles.card}>
+    <View style={completed ? styles.targetComplete : styles.target}>
       <View style={styles.cardHeader}>
         <View style={[styles.circle, { backgroundColor: props.color }]} />
         <Text style={styles.textTitle}>{props.title}</Text>
@@ -30,17 +30,19 @@ const Target = (props) => {
 };
 
 const styles = StyleSheet.create({
-  card: {
+  target: {
     flexDirection: "column",
     backgroundColor: "#FFF",
     borderWidth: 3,
     borderColor: "#FFF",
     height: "auto",
-    padding: 20,
-    borderRadius: 25,
+    paddingTop: 15,
+    paddingBottom: 10,
+    paddingHorizontal: 20,
+    borderRadius: 20,
     marginBottom: 25,
   },
-  cardComplete: {
+  targetComplete: {
     flexDirection: "column",
     backgroundColor: "#EEEBEB",
     height: "auto",
@@ -48,8 +50,10 @@ const styles = StyleSheet.create({
     borderColor: "#bbb",
     borderStyle: "dashed",
     opacity: 0.6,
-    padding: 20,
-    borderRadius: 25,
+    paddingTop: 15,
+    paddingBottom: 10,
+    paddingHorizontal: 20,
+    borderRadius: 20,
     marginBottom: 25,
   },
   circle: {
@@ -64,7 +68,7 @@ const styles = StyleSheet.create({
   },
 
   textTitle: {
-    marginLeft: 28,
+    marginLeft: 20,
     fontWeight: "500",
     fontSize: 18,
   },

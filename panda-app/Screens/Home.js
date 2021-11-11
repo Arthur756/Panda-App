@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, ImageBackground, Image } from "react-native";
+import { View, ScrollView, Text, StyleSheet, ImageBackground, Image } from "react-native";
 
 //Icons
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -13,7 +13,7 @@ const Home = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
 
   return (
-    <View style={styles.main}>
+    <ScrollView style={styles.main}>
       <View style={styles.background}></View>
       <View style={styles.header}>
         <ProfileIcon navigation={navigation} />
@@ -22,7 +22,7 @@ const Home = ({ navigation }) => {
       </View>
       <Card />
       <Tabs navigation={navigation} />
-    </View>
+    </ScrollView>
   );
 };
 
