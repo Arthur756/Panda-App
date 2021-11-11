@@ -35,7 +35,7 @@ router.post('/signup', (req, res) =>{
             status: "FAILED",
             message: "Entrada de cpf inválido!"
         })
-    } else if (senha.lenght < 8) {
+    } else if (senha.length < 8) {
         res.json({
             status: "FAILED",
             message: "Senha muito curta!"
@@ -94,7 +94,58 @@ router.post('/signup', (req, res) =>{
 })
 //Signin
 router.post('/signin', (req, res) =>{
+    let {email, senha} = req.body;
+    email = email.trim();
+    senha = senha.trim();
 
+    if (email == "" || senha == ""){
+        res.json({
+            status: "FAILED",
+            message: "Credenciais necessárias vazias"
+        })
+    } else {
+        // Checar se o usuário existe
+        User.find({email})
+        .then (data => {
+            if (data.length){
+                // Usuário existe
+
+                const hashedSenha = data[0].senha;
+                bcrypt.compare(senha, hashedSenha).then(result => {
+                    if (result){
+                        // Senha bateu
+                        res.json({
+                            status: "SUCCESS",
+                            message: "Login com sucesso!",
+                            data: data
+                        })
+                    } else {
+                        res.json({
+                            status: "FAILED",
+                            message: "Senha inserida incorreta!"
+                        })
+                    }
+                })
+                .catch(err => {
+                    res.json({
+                        status: "FAILED",
+                        message: "Um erro ocorreu ao comparar a senha inserida com a do banco."
+                    })
+                })
+            } else {
+                res.json({
+                    status: "FAILED",
+                    message: "Credencias inseridas inválidas!"
+                })
+            }
+        })
+        .catch(err => {
+            res.json({
+                status: "FAILED",
+                message: "Um erro ocorreu ao buscar a existência do usuário no banco."
+            })
+        })
+    }
 })
 
 module.exports = router;
