@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, ScrollView, Text, StyleSheet, ImageBackground, Image } from "react-native";
+import { View, ScrollView, Text, StyleSheet, StatusBar, Image } from "react-native";
 
 //Icons
 import Icon from "react-native-vector-icons/MaterialIcons";
@@ -14,6 +14,7 @@ const Home = ({ navigation }) => {
 
   return (
     <ScrollView style={styles.main}>
+      <StatusBar barStyle="light-content" backgroundColor="#fff" />
       <View style={styles.background}></View>
       <View style={styles.header}>
         <ProfileIcon navigation={navigation} />

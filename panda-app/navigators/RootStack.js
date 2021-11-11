@@ -49,7 +49,7 @@ const RootStack = () => {
             screenOptions={{
                 headerShown: true
             }}
-            initialRouteName="Reports"
+            initialRouteName="Home"
             >
                 <Stack.Screen 
                     name="Login" 

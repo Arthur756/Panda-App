@@ -96,7 +96,7 @@ const Targets = ({ navigation }) => {
 
   return (
     <View style={[styles.main]}>
-      <StatusBar barStyle="light-content" backgroundColor="#A1E4FD" />
+      <StatusBar barStyle="light-content" backgroundColor="#fff" />
       <Modal
         animationType="fade"
         transparent={true}
@@ -314,7 +314,7 @@ const styles = StyleSheet.create({
   },
   targetsList: {
     // backgroundColor: 'green',
-    paddingBottom: 85,
+    marginBottom: 75,
     paddingTop: 10,
   },
 
