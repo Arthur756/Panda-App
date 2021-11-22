@@ -1,60 +1,89 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
 
+<<<<<<< HEAD
 // Bibliotecas
 import InputRange from "react-input-range";
 import "react-input-range/lib/css/index.css";
 import { useState } from "react/cjs/react.development";
+=======
+// Libraries
+import Slider from "@react-native-community/slider";
+>>>>>>> bdcdfa9eacc565e68b7f2b4afcc03619ac88ab58
 
 const ProgressBar = (props) => {
-  const { bgcolor, completed } = props;
-
-  const containerStyles = {
-    height: 10,
-    backgroundColor: "#e0e0de",
-    borderRadius: 150,
-    alignItems: "stretch",
-    marginTop: 20,
-    marginBottom: 24,
-  };
-
-  const fillerStyles = {
-    height: "100%",
-    width: `${completed}%`,
-    backgroundColor: bgcolor,
-    borderRadius: 50,
-    textAlign: "right",
-  };
-
-  const labelStyles = {
-    padding: 5,
-    color: "white",
-  };
-
-  const targetContainer = {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    margin: 4,
-  };
-
-  const targetValue = {
-    fontSize: 15,
-    fontWeight: "500",
-  };
-
-  const [value, setValue] = useState(10);
+  const [value, setValue] = useState(props.havingTarget);
+  
+  function _changeValue() {
+    props.changeValue(value);
+  }
 
   return (
-    <View style={containerStyles}>
-      <View style={fillerStyles}>
-        <View style={labelStyles}></View>
-      </View>
-      <View style={targetContainer}>
-        <Text style={targetValue}>R$ {props.havingTarget}</Text>
-        <Text style={targetValue}>R$ {props.totalTarget}</Text>
+    <View>
+      <Slider
+        style={styles.targetSlider}
+        minimumValue={0}
+        maximumValue={props.totalTarget}
+        thumbTintColor={props.bgcolor}
+        minimumTrackTintColor={props.bgcolor}
+        maximumTrackTintColor="#ddd"
+        value={value}
+        onValueChange={(value)=> setValue(value)}
+        onSlidingComplete={_changeValue}
+      />
+      <View style={styles.targetContainer}>
+        <Text style={styles.havingTarget}>
+          R$ {parseFloat(value).toFixed(2)}
+        </Text>
+        <Text style={styles.targetValue}>
+          R$ {parseFloat(props.totalTarget).toFixed(2)}
+        </Text>
       </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  targetContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    margin: 4,
+  },
+  targetValue: {
+    fontSize: 15,
+    fontWeight: "500",
+  },
+  targetSlider: {
+    marginTop: 15,
+    width: "100%",
+  },
+  havingTarget: {
+    color: "#03773f",
+    fontSize: 15,
+    fontWeight: "500",
+  },
+});
+
+// const containerStyles = {
+//   height: 10,
+//   backgroundColor: "#e0e0de",
+//   borderRadius: 150,
+//   alignItems: "stretch",
+//   marginTop: 20,
+//   marginBottom: 24,
+// };
+
+// const fillerStyles = {
+//   height: "100%",
+//   width: `${completed}%`,
+//   backgroundColor: bgcolor,
+//   borderRadius: 50,
+//   textAlign: "right",
+// };
+
+// const labelStyles = {
+//   padding: 5,
+//   color: "white",
+// };
 
 export default ProgressBar;

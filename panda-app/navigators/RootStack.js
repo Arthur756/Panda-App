@@ -3,7 +3,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 // Styles
 import { Colors } from './../Components/styles';
-const {primary, third} = Colors;
 
 // React Navigation
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
@@ -50,7 +49,7 @@ const RootStack = () => {
             screenOptions={{
                 headerShown: true
             }}
-            initialRouteName="Login"
+            initialRouteName="Home"
             >
                 <Stack.Screen 
                     name="Login" 
