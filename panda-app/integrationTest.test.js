@@ -1,7 +1,9 @@
 import integration from './integration';
+import integration1 from './integration';
+
 // integration test 
 
-test('properly return in console Hello World', () => {
-    expect(integration("Hello", "World")).toEqual("Hello World")
+test('properly return in console Hello Test', () => {
+    expect(integration("Hello", "Test")).toEqual("Hello Test")
 })
 
