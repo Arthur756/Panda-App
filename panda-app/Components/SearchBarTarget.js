@@ -24,7 +24,7 @@ const SearchBarTarget = (props) => {
 const styles = StyleSheet.create({
   input: {
     paddingLeft: 10,
-    fontWeight: 600,
+    fontWeight: "600",
     backgroundColor: "white",
     width: "85%",
     height: "100%",

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 // Componentes
@@ -8,10 +8,20 @@ const Target = (props) => {
   const [completed, setCompleted] = useState(false);
 
   function changeValue(value) {
-    props.changeTarget(props.id, props.color, props.title, value, props.totalTarget);
+    props.changeTarget(
+      props.id,
+      props.color,
+      props.title,
+      value,
+      props.totalTarget
+    );
     if (value == props.totalTarget) setCompleted(true);
     else setCompleted(false);
   }
+
+  useEffect(() => {
+    if (props.value == props.totalTarget) setCompleted(true);
+  });
 
   return (
     <View style={completed ? styles.targetComplete : styles.target}>
@@ -48,6 +58,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.3,
     shadowRadius: 10,
+    overflow: "hidden",
   },
   targetComplete: {
     flexDirection: "column",
@@ -55,18 +66,22 @@ const styles = StyleSheet.create({
     height: "auto",
     borderWidth: 3,
     borderColor: "#bbb",
-    borderStyle: "dashed",
+    // borderStyle: "dashed",
     opacity: 0.6,
     paddingTop: 15,
     paddingBottom: 10,
     paddingHorizontal: 20,
     borderRadius: 20,
     marginBottom: 25,
+    overflow: "hidden",
   },
   circle: {
-    borderRadius: 50,
-    width: 40,
-    height: 40,
+    position: "absolute",
+    borderRadius: 500,
+    top: -100,
+    left: -100,
+    width: 150,
+    height: 150,
   },
   cardHeader: {
     flexDirection: "row",
@@ -75,7 +90,8 @@ const styles = StyleSheet.create({
   },
 
   textTitle: {
-    marginLeft: 20,
+    marginLeft: 65,
+    marginBottom: 15,
     fontWeight: "500",
     fontSize: 18,
   },

@@ -125,32 +125,32 @@ const styles = StyleSheet.create({
   text1: {
     color: "#fff",
     fontSize: 30,
-    fontWeight: 600,
+    fontWeight: "600",
   },
   text2: {
     color: "#ffffff99",
     fontSize: 18,
-    fontWeight: 300,
+    fontWeight: "300",
   },
   text3: {
     color: "#000",
     fontSize: 20,
-    fontWeight: 700,
+    fontWeight: "700",
   },
   text4: {
     color: "#fff",
     fontSize: 24,
-    fontWeight: 600,
+    fontWeight: "600",
   },
   text5: {
     color: "#fff",
     fontSize: 15,
-    fontWeight: 400,
+    fontWeight: "400",
   },
   text6: {
     color: "#000",
     fontSize: 16,
-    fontWeight: 600,
+    fontWeight: "600",
   },
   completeRegister: {
     backgroundColor: "#179E5D",

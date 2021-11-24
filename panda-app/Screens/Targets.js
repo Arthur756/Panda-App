@@ -50,7 +50,7 @@ const Targets = ({ navigation }) => {
       id: 12,
       color: "#8b0000",
       targetTitle: "Curso de trader",
-      value: 450,
+      value: 500,
       totalTarget: 500,
     },
     {
@@ -173,14 +173,9 @@ const Targets = ({ navigation }) => {
           <Text style={[styles.textTitle]}>Suas Metas</Text>
         </View>
         <View style={styles.headerConteiner}>
-          <View style={[styles.headerLeft]}>
-            <Text style={[styles.textPoupanca]}>Ganhos Mensais</Text>
-            <Text style={[styles.textSaldo]}>R$ 6.500,00</Text>
-          </View>
-          <View style={[styles.headerRight]}>
             <Text style={[styles.textPoupanca]}>Total em Metas</Text>
             <Text style={[styles.textSaldo]}>R$ {sumTargets}</Text>
-          </View>
+          
         </View>
       </View>
       {/* <ProfileIcon navigation={navigation} /> */}
@@ -298,41 +293,36 @@ const styles = StyleSheet.create({
   },
 
   // Background //
-  background: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    backgroundColor: "#2DB071",
-    borderTopRightRadius: 28,
-    borderTopLeftRadius: 28,
-    width: "100%",
-    height: 600,
-    flex: 1,
-  },
+  // background: {
+  //   position: "absolute",
+  //   bottom: 0,
+  //   left: 0,
+  //   backgroundColor: "#2DB071",
+  //   borderTopRightRadius: 28,
+  //   borderTopLeftRadius: 28,
+  //   width: "100%",
+  //   height: 600,
+  //   flex: 1,
+  // },
 
   // Header //
   header: {
     flexDirection: "column",
     marginTop: 10,
-    justifyContent: "end",
+    justifyContent: "flex-end",
     paddingHorizontal: 25,
   },
   header_top: {
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
-    justifyContent: "end",
+    justifyContent: "flex-end",
+  },
+  headerConteiner: {
+    flexDirection: "column",
+    width: "100%",
+    alignItems: "flex-end",
     marginBottom: 35,
-  },
-  headerLeft: {
-    flexDirection: "column",
-    // width: "100%",
-    // alignItems: "end",
-  },
-  headerRight: {
-    flexDirection: "column",
-    // width: "100%",
-    alignItems: "end",
   },
   textTitle: {
     // fontFamily: "monospace",
@@ -340,19 +330,14 @@ const styles = StyleSheet.create({
     fontSize: 34,
   },
   textPoupanca: {
-    marginTop: 25,
+    marginTop: 10,
     // fontFamily: "monospace",
-    color: "#AAAAAA",
+    color: "#999",
     fontSize: 16,
   },
   textSaldo: {
-    color: "#fff",
+    color: "#ddd",
     fontSize: 24,
-  },
-  headerConteiner: {
-    flexDirection: "row",
-    width: "100%",
-    justifyContent: "space-between",
   },
   headerMetas: {
     zIndex: 1,
@@ -362,7 +347,7 @@ const styles = StyleSheet.create({
     height: 80,
     paddingHorizontal: 25,
     alignItems: "center",
-    // justifyContent: "end",
+    // justifyContent: "flex-end",
     backgroundColor: "#2DB071", //2DB071 //1C6843
     borderTopLeftRadius: 28,
     borderTopRightRadius: 28,
@@ -387,12 +372,12 @@ const styles = StyleSheet.create({
   // Targets //
   targets: {
     height: "100%",
-
+    backgroundColor: '#2DB071',
     // paddingBottom: 70,
   },
   targetsList: {
     paddingHorizontal: 25,
-    // backgroundColor: 'green',
+    backgroundColor: '#2DB071',
     marginBottom: 75,
     paddingTop: 20,
   },
