@@ -1,14 +1,11 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-// Styles
-import { Colors } from './../Components/styles';
-
 // React Navigation
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-// screens
+ 
+// Telas
 import Login from './../Screens/Login'
 import SignUp from './../Screens/SignUp';
 import Profile from '../Screens/Profile';
@@ -26,14 +23,24 @@ const MyTheme ={
 };
 
 const headerStyle = {
+    headerTitle: '',
+    headerTransparent: true,
+    headerStyle: {
+        borderBottomWidth: 0,
+        
+    }
+}
+
+const headerStyleWhite = {
         headerTitle: '',
         headerTransparent: true,
+        headerTintColor: '#fff',
         headerStyle: {
             borderBottomWidth: 0,
         }
 }
 
-const headerStyleHome = {
+const headerStyleWithoutArrow = {
     headerTitle: '',
     headerTransparent: true,
     headerStyle: {
@@ -49,18 +56,18 @@ const RootStack = () => {
             screenOptions={{
                 headerShown: true
             }}
-            initialRouteName="Home"
+            initialRouteName="Login"
             >
                 <Stack.Screen 
                     name="Login" 
                     component={Login}
-                    options={headerStyle}
+                    options={headerStyleWithoutArrow}
                     
                 />
                 <Stack.Screen 
                     name="Home" 
                     component={Home}
-                    options={headerStyleHome}
+                    options={headerStyleWithoutArrow}
                     
                 />
                 <Stack.Screen 

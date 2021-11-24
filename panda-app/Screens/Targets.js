@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -9,8 +9,8 @@ import {
   Modal,
   TextInput,
   FlatList,
+  Image,
 } from "react-native";
-import { useState } from "react/cjs/react.development";
 
 // Bibliotecas
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -20,12 +20,16 @@ import ColorPicker from "react-native-wheel-color-picker";
 import ProfileIcon from "../Components/ProfileIcon";
 import Target from "../Components/Target";
 
+// Imagens
+import wave from "../assets/profile-wave.png";
+
 const Targets = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [targetTitle, setTargetTitle] = useState("");
   const [targetValue, setTargetValue] = useState();
   const [currentColor, setCurrentColor] = useState("");
   const [id, setId] = useState(0);
+  const [totalTarget, setTotalTarget] = useState();
   const [targetList, setTargetList] = useState([
     {
       id: 10,
@@ -48,6 +52,13 @@ const Targets = ({ navigation }) => {
       value: 450,
       totalTarget: 500,
     },
+    {
+      id: 13,
+      color: "#dddddd",
+      targetTitle: "Curso de DevWeb",
+      value: 25,
+      totalTarget: 35,
+    },
   ]);
 
   const renderItem = ({ item }) => (
@@ -60,6 +71,15 @@ const Targets = ({ navigation }) => {
       changeTarget={changeTarget}
     />
   );
+
+  function calcTarget() {
+    var total = 0;
+    targetList.forEach((element) => {
+      total += element.totalTarget;
+    });
+    setTotalTarget(parseFloat(total).toFixed(2));
+  }
+
   function handleChangeTitle(event) {
     setTargetTitle(event.target.value);
   }
@@ -89,14 +109,19 @@ const Targets = ({ navigation }) => {
       setModalVisible(false);
       setId(id + 1);
       setTargetList(newArray);
+      calcTarget();
       setTargetTitle();
       setTargetValue();
     }
   }
 
+  useEffect(() => calcTarget());
+
   return (
     <View style={[styles.main]}>
       <StatusBar barStyle="light-content" backgroundColor="#fff" />
+      <Image source={wave} style={styles.wave}></Image>
+      <View style={styles.background}></View>
       <Modal
         animationType="fade"
         transparent={true}
@@ -144,17 +169,22 @@ const Targets = ({ navigation }) => {
 
       <View style={[styles.header]}>
         <View style={[styles.header_top]}>
-          <Text style={[styles.textTitle]}>Metas</Text>
+          <Text style={[styles.textTitle]}>Suas Metas</Text>
         </View>
-        <View style={[styles.header_bottom]}>
-          <Text style={[styles.textPoupanca]}>Poupança</Text>
-          <Text style={[styles.textSaldo]}>R$ 3.500,00</Text>
+        <View style={styles.headerConteiner}>
+          <View style={[styles.headerLeft]}>
+            <Text style={[styles.textPoupanca]}>Ganhos Mensais</Text>
+            <Text style={[styles.textSaldo]}>R$ 6.500,00</Text>
+          </View>
+          <View style={[styles.headerRight]}>
+            <Text style={[styles.textPoupanca]}>Total em Metas</Text>
+            <Text style={[styles.textSaldo]}>R$ {totalTarget}</Text>
+          </View>
         </View>
       </View>
       {/* <ProfileIcon navigation={navigation} /> */}
 
       <View style={[styles.headerMetas]}>
-        <Text style={[styles.textSuasMetas]}>Suas metas</Text>
         <Text style={[styles.textFiltro]}>Filtro</Text>
       </View>
       <ScrollView
@@ -180,14 +210,21 @@ const Targets = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  // Modal
+  wave: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: 126,
+    height: 110,
+  },
+
+  // Modal //
   modal: {
     backgroundColor: "#00000088",
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
-
   modalView: {
     width: "80%",
     backgroundColor: "white",
@@ -203,7 +240,6 @@ const styles = StyleSheet.create({
     shadowRadius: 14,
     elevation: 10,
   },
-
   modalTitle: {
     fontSize: 20,
     fontWeight: "500",
@@ -211,12 +247,10 @@ const styles = StyleSheet.create({
     marginLeft: -10,
     marginBottom: 15,
   },
-
   modalText: {
     fontSize: 16,
     fontWeight: "500",
   },
-
   modalInput: {
     color: "#111",
     width: "100%",
@@ -228,13 +262,11 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     borderRadius: 3,
   },
-
   modalClose: {
     position: "absolute",
     top: 25,
     right: 20,
   },
-
   modalButton: {
     marginTop: 30,
     width: "100%",
@@ -243,42 +275,63 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 20,
   },
-
   modalButtonText: {
     color: "white",
     fontSize: 16,
     fontWeight: "500",
   },
 
-  // Main
+  // Main //
   main: {
     flex: 1,
-    backgroundColor: "#EEEEEE",
+    backgroundColor: "#070707",
     flexDirection: "column",
-    paddingLeft: 25,
-    paddingRight: 25,
+    // paddingLeft: 25,
+    // paddingRight: 25,
     paddingTop: 25,
     // backgroundColor: "pink"
   },
 
-  // Header
+  // Background //
+  background: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    backgroundColor: "#2DB071",
+    borderTopRightRadius: 28,
+    borderTopLeftRadius: 28,
+    width: "100%",
+    height: 600,
+    flex: 1,
+  },
+
+  // Header //
   header: {
     flexDirection: "column",
-    marginTop: 30,
+    marginTop: 10,
+    justifyContent: "end",
+    paddingHorizontal: 25,
   },
   header_top: {
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
-    justifyContent: "space-between",
+    justifyContent: "end",
+    marginBottom: 35,
   },
-  header_bottom: {
+  headerLeft: {
     flexDirection: "column",
-    width: "100%",
+    // width: "100%",
+    // alignItems: "end",
+  },
+  headerRight: {
+    flexDirection: "column",
+    // width: "100%",
+    alignItems: "end",
   },
   textTitle: {
     // fontFamily: "monospace",
-    color: "#000000",
+    color: "#fff",
     fontSize: 34,
   },
   textPoupanca: {
@@ -288,31 +341,43 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   textSaldo: {
-    color: "#000000",
+    color: "#fff",
     fontSize: 24,
   },
-  headerMetas: {
-    marginTop: 50,
-    marginBottom: 10,
+  headerConteiner: {
     flexDirection: "row",
     width: "100%",
     justifyContent: "space-between",
   },
-  textSuasMetas: {
-    color: "#147A50",
-    fontSize: 16,
+  headerMetas: {
+    marginTop: 50,
+    paddingBottom: 10,
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "end",
+    // backgroundColor: "pink",
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 4,
+    // },
+    // shadowOpacity: 0.4,
+    // shadowRadius: 7,
   },
   textFiltro: {
+    paddingHorizontal: 25,
     color: "#333333",
     fontSize: 16,
   },
 
-  // Targets
+  // Targets //
   targets: {
     height: "100%",
+    
     // paddingBottom: 70,
   },
   targetsList: {
+    paddingHorizontal: 25,
     // backgroundColor: 'green',
     marginBottom: 75,
     paddingTop: 10,
@@ -324,7 +389,7 @@ const styles = StyleSheet.create({
     flex: 0.1,
     right: 15,
     bottom: 15,
-    backgroundColor: "#2DB071",
+    backgroundColor: "#070707",
     width: 75,
     height: 75,
     justifyContent: "center",

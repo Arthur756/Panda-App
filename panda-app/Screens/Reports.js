@@ -1,14 +1,18 @@
 import React from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, Image } from "react-native";
 
 // Bibliotecas
 import SwitchSelector from "react-native-switch-selector";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 // Componentes
+import BezierChart from "../Components/BezierChart";
 import ProgressRing from "../Components/ProgressRing";
-const Reports = () => {
 
+// Imagens
+import wave from "../assets/profile-wave.png";
+
+const Reports = () => {
   // Configuração do Switch
   const options = [
     { label: "DIA", value: "1" },
@@ -20,6 +24,7 @@ const Reports = () => {
   return (
     <View style={styles.main}>
       <View style={styles.upConteiner}>
+        <Image source={wave} style={styles.wave}></Image>
         <View style={styles.header}>
           <TouchableOpacity style={styles.arrowBtn}>
             <Icon name="chevron-left" size={12} color={"#fff"} />
@@ -30,7 +35,7 @@ const Reports = () => {
           </TouchableOpacity>
         </View>
 
-        <ProgressRing style={styles.progressRing} />
+        <ProgressRing />
       </View>
       <View style={styles.midConteiner}>
         <SwitchSelector
@@ -45,7 +50,9 @@ const Reports = () => {
           onPress={(value) => console.log(`Call onPress with value: ${value}`)}
         />
       </View>
-      <View style={styles.downConteiner}></View>
+      <View style={styles.downConteiner}>
+        <BezierChart />
+      </View>
     </View>
   );
 };
@@ -55,6 +62,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#F1F1F1",
     width: "100%",
     height: "100%",
+  },
+  wave: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: 126,
+    height: 110,
   },
   upConteiner: {
     backgroundColor: "#000",
@@ -79,7 +93,7 @@ const styles = StyleSheet.create({
   },
   month: {
     color: "#fff",
-    fontWeight: '300',
+    fontWeight: "300",
     letterSpacing: 5,
     marginHorizontal: 20,
   },
@@ -97,6 +111,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: "100%",
     height: "42%",
+    alignItems: "center",
+    paddingTop: 80,
     shadowColor: "#2DB07188",
     shadowOffset: {
       width: 0,

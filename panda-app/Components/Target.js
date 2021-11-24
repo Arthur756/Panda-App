@@ -41,6 +41,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 20,
     marginBottom: 25,
+    shadowColor: "#222",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
   },
   targetComplete: {
     flexDirection: "column",

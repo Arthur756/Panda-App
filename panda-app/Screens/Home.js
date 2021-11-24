@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { View, ScrollView, Text, StyleSheet, StatusBar, Image } from "react-native";
 
-//Icons
-import Icon from "react-native-vector-icons/MaterialIcons";
-
 // Components
 import Card from "../Components/Card";
 import ProfileIcon from "../Components/ProfileIcon";

@@ -1,15 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-<<<<<<< HEAD
 // Bibliotecas
-import InputRange from "react-input-range";
-import "react-input-range/lib/css/index.css";
-import { useState } from "react/cjs/react.development";
-=======
-// Libraries
 import Slider from "@react-native-community/slider";
->>>>>>> bdcdfa9eacc565e68b7f2b4afcc03619ac88ab58
 
 const ProgressBar = (props) => {
   const [value, setValue] = useState(props.havingTarget);

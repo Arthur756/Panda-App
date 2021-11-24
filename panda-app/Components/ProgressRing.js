@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     flexDirection: "row",
-    top: 50,
+    top: 90,
     padding: 25,
   },
   progressRing: {
