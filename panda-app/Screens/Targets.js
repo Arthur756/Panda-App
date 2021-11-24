@@ -19,6 +19,7 @@ import ColorPicker from "react-native-wheel-color-picker";
 // Componentes
 import ProfileIcon from "../Components/ProfileIcon";
 import Target from "../Components/Target";
+import SearchBarTarget from "../Components/SearchBarTarget";
 
 // Imagens
 import wave from "../assets/profile-wave.png";
@@ -26,10 +27,10 @@ import wave from "../assets/profile-wave.png";
 const Targets = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [targetTitle, setTargetTitle] = useState("");
-  const [targetValue, setTargetValue] = useState();
+  const [targetValue, setTargetValue] = useState(0);
   const [currentColor, setCurrentColor] = useState("");
   const [id, setId] = useState(0);
-  const [totalTarget, setTotalTarget] = useState();
+  const [sumTargets, setSumTargets] = useState();
   const [targetList, setTargetList] = useState([
     {
       id: 10,
@@ -75,9 +76,9 @@ const Targets = ({ navigation }) => {
   function calcTarget() {
     var total = 0;
     targetList.forEach((element) => {
-      total += element.totalTarget;
+      total += parseFloat(element.totalTarget);
     });
-    setTotalTarget(parseFloat(total).toFixed(2));
+    setSumTargets(total.toFixed(2));
   }
 
   function handleChangeTitle(event) {
@@ -101,7 +102,7 @@ const Targets = ({ navigation }) => {
   }
 
   function createTarget(id, color, targetTitle, value, totalTarget) {
-    if (totalTarget == null || targetTitle == null) {
+    if (totalTarget <= 0 || totalTarget == null || targetTitle.length == 0) {
       return alert("Preencha todos os campos!");
     } else {
       const newTarget = { id, color, targetTitle, value, totalTarget };
@@ -110,8 +111,8 @@ const Targets = ({ navigation }) => {
       setId(id + 1);
       setTargetList(newArray);
       calcTarget();
-      setTargetTitle();
-      setTargetValue();
+      setTargetTitle("");
+      setTargetValue(0);
     }
   }
 
@@ -178,14 +179,18 @@ const Targets = ({ navigation }) => {
           </View>
           <View style={[styles.headerRight]}>
             <Text style={[styles.textPoupanca]}>Total em Metas</Text>
-            <Text style={[styles.textSaldo]}>R$ {totalTarget}</Text>
+            <Text style={[styles.textSaldo]}>R$ {sumTargets}</Text>
           </View>
         </View>
       </View>
       {/* <ProfileIcon navigation={navigation} /> */}
 
       <View style={[styles.headerMetas]}>
-        <Text style={[styles.textFiltro]}>Filtro</Text>
+        <SearchBarTarget width={86}/>
+        <TouchableOpacity style={styles.gridBtn}>
+          <Icon name="th-large" size={25} color={"#fff"}></Icon>
+        </TouchableOpacity>
+        {/* <Text style={[styles.textFiltro]}>Filtro</Text> */}
       </View>
       <ScrollView
         style={[styles.targets]}
@@ -350,37 +355,46 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   headerMetas: {
-    marginTop: 50,
-    paddingBottom: 10,
+    zIndex: 1,
+    marginTop: 16,
     flexDirection: "row",
     width: "100%",
-    justifyContent: "end",
-    // backgroundColor: "pink",
-    // shadowColor: "#000",
-    // shadowOffset: {
-    //   width: 0,
-    //   height: 4,
-    // },
-    // shadowOpacity: 0.4,
-    // shadowRadius: 7,
+    height: 80,
+    paddingHorizontal: 25,
+    alignItems: "center",
+    // justifyContent: "end",
+    backgroundColor: "#2DB071", //2DB071 //1C6843
+    borderTopLeftRadius: 28,
+    borderTopRightRadius: 28,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 7,
   },
   textFiltro: {
     paddingHorizontal: 25,
     color: "#333333",
     fontSize: 16,
   },
+  gridBtn: {
+    marginLeft: "auto",
+  },
+
 
   // Targets //
   targets: {
     height: "100%",
-    
+
     // paddingBottom: 70,
   },
   targetsList: {
     paddingHorizontal: 25,
     // backgroundColor: 'green',
     marginBottom: 75,
-    paddingTop: 10,
+    paddingTop: 20,
   },
 
   // Button
@@ -403,6 +417,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 7,
   },
+  
 });
 
 export default Targets;
