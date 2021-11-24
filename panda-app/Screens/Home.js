@@ -9,7 +9,7 @@ import Card from "../Components/Card";
 import ProfileIcon from "../Components/ProfileIcon";
 import Tabs from "../Components/Tabs.js";
 
-const Home = ({ navigation }) => {
+const Home = ({ navigation}) => {
   const [hidePassword, setHidePassword] = useState(true);
 
   return (
