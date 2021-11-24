@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-// Libraries
+// Bibliotecas
 import Slider from "@react-native-community/slider";
 
 const ProgressBar = (props) => {
