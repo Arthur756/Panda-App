@@ -38,20 +38,20 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 28,
     top: 35,
-    borderRadius: 50,
+    borderRadius: 15,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.3,
-    shadowRadius: 10,
+    shadowOpacity: 0.45,
+    shadowRadius: 12,
     overflow: "hidden",
   },
   profile: {
     width: 80,
     height: 80,
-    borderRadius: 50,
+    // borderRadius: 50,
   },
 });
 export default ProfileIcon;

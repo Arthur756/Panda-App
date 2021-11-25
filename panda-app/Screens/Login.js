@@ -32,7 +32,7 @@ import {
 import {View, ActivityIndicator } from 'react-native';
 
 //API Client
-import axios from 'axios';
+import axios from 'react-native-axios';
 
 //colors
 const {brand, darkLight, primary} = Colors;

@@ -56,7 +56,7 @@ const RootStack = () => {
             screenOptions={{
                 headerShown: true
             }}
-            initialRouteName="Login"
+            initialRouteName="Home"
             >
                 <Stack.Screen 
                     name="Login" 
