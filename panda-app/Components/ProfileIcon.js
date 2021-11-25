@@ -1,15 +1,35 @@
-import React from "react";
-import { TouchableOpacity, StyleSheet, View, Image } from "react-native";
+import React, { useRef, useEffect } from "react";
+import {
+  TouchableOpacity,
+  StyleSheet,
+  View,
+  Image,
+  Animated,
+} from "react-native";
 
 const ProfileIcon = ({ navigation }) => {
+  const fadeProfile = useRef(new Animated.Value(0)).current;
+
+  useEffect(() =>
+    Animated.timing(fadeProfile, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start()
+  );
+
   return (
-    <TouchableOpacity
-      style={styles.profileIcon}
-      onPress={() => navigation.navigate("Profile")}
-      source={require("../assets/perfil1.jpg")}
-    >
-      <Image style={styles.profile} source={require("../assets/perfil1.jpg")} />
-    </TouchableOpacity>
+    <Animated.View style={[styles.profileIcon, { opacity: fadeProfile }]}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Profile")}
+        source={require("../assets/perfil1.jpg")}
+      >
+        <Image
+          style={styles.profile}
+          source={require("../assets/perfil1.jpg")}
+        />
+      </TouchableOpacity>
+    </Animated.View>
   );
 };
 
@@ -20,7 +40,7 @@ const styles = StyleSheet.create({
     top: 35,
     borderRadius: 18,
     shadowColor: "#000",
-    shadowOffset: { 
+    shadowOffset: {
       width: 0,
       height: 1,
     },

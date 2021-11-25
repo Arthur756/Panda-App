@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  Animated,
+} from "react-native";
 
 const Tabs = ({ navigation }) => {
+  const fadeTabs = useRef(new Animated.Value(0)).current;
+
+  useEffect(() =>
+    Animated.timing(fadeTabs, {
+      toValue: 1,
+      delay: 1000,
+      duration: 1000,
+      useNativeDriver: true
+    }).start() 
+  );
+
   return (
-    <View>
+    <Animated.View style={{opacity: fadeTabs}}>
       <View style={styles.tabsContainer}>
         <TouchableOpacity
           style={styles.tab}
@@ -49,9 +67,12 @@ const Tabs = ({ navigation }) => {
           navigation.navigate("Reports");
         }}
       >
-        <Image style={styles.reportImage} source={require("../assets/reports.png")} />
+        <Image
+          style={styles.reportImage}
+          source={require("../assets/reports.png")}
+        />
       </TouchableOpacity>
-    </View>
+    </Animated.View>
   );
 };
 
@@ -94,8 +115,8 @@ const styles = StyleSheet.create({
   },
   reportImage: {
     width: 244,
-    height: 177.17
-  }
+    height: 177.17,
+  },
 });
 
 export default Tabs;

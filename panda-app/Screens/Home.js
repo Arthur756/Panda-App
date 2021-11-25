@@ -1,5 +1,13 @@
-import React, { useState } from "react";
-import { View, ScrollView, Text, StyleSheet, StatusBar, Image } from "react-native";
+import React, { useState, useRef, useEffect } from "react";
+import {
+  View,
+  ScrollView,
+  Text,
+  StyleSheet,
+  StatusBar,
+  Image,
+  Animated,
+} from "react-native";
 
 // Components
 import Card from "../Components/Card";
@@ -7,16 +15,42 @@ import ProfileIcon from "../Components/ProfileIcon";
 import Tabs from "../Components/Tabs.js";
 
 const Home = ({ navigation }) => {
-  const [hidePassword, setHidePassword] = useState(true);
+  const [hidePassword, setHidePassword] = useState(false);
+
+  const fadeText = useRef(new Animated.Value(0)).current;
+  const fadeTitle = useRef(new Animated.Value(0)).current;
+  const animatedValue = useRef(new Animated.Value(500)).current;
+
+  useEffect(() =>
+    Animated.timing(fadeText, {
+      toValue: 1,
+      duration: 1200,
+      useNativeDriver: true
+    }).start(),
+    Animated.timing(fadeTitle, {
+      toValue: 1,
+      duration: 1800,
+      useNativeDriver: true
+    }).start(),
+    Animated.timing(animatedValue, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true
+    }).start()
+  );
 
   return (
     <ScrollView style={styles.main}>
       <StatusBar barStyle="light-content" backgroundColor="#fff" />
-      <View style={styles.background}></View>
+      <Animated.View style={[styles.background, {transform: [{ translateY: animatedValue }]}]}></Animated.View>
       <View style={styles.header}>
         <ProfileIcon navigation={navigation} />
-        <Text style={styles.headerText}>Olá,</Text>
-        <Text style={styles.headerTitle}>Ana Chaves</Text>
+        <Animated.Text style={[styles.headerText, { opacity: fadeText }]}>
+          Olá,
+        </Animated.Text>
+        <Animated.Text style={[styles.headerTitle, { opacity: fadeTitle }]}>
+          Ana Chaves
+        </Animated.Text>
       </View>
       <Card />
       <Tabs navigation={navigation} />

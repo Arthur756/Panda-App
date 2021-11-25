@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   View,
   Text,
@@ -10,6 +10,7 @@ import {
   TextInput,
   FlatList,
   Image,
+  Animated
 } from "react-native";
 
 // Bibliotecas
@@ -17,7 +18,6 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import ColorPicker from "react-native-wheel-color-picker";
 
 // Componentes
-import ProfileIcon from "../Components/ProfileIcon";
 import Target from "../Components/Target";
 import SearchBarTarget from "../Components/SearchBarTarget";
 
@@ -26,6 +26,7 @@ import wave from "../assets/profile-wave.png";
 
 const Targets = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
+
   const [targetTitle, setTargetTitle] = useState("");
   const [targetValue, setTargetValue] = useState(0);
   const [currentColor, setCurrentColor] = useState("");
@@ -379,7 +380,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     backgroundColor: '#2DB071',
     marginBottom: 75,
-    paddingTop: 20,
+    paddingTop: 25,
   },
 
   // Button
