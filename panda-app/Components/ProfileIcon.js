@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     right: 28,
     top: 35,
-    borderRadius: 18,
+    borderRadius: 50,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   profile: {
     width: 80,
     height: 80,
-    // borderRadius: 18,
+    borderRadius: 50,
   },
 });
 export default ProfileIcon;

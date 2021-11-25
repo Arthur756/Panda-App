@@ -38,6 +38,35 @@ const {brand, darkLight, primary} = Colors;
 const SignUp = ({navigation}) => {
         const [hidePassword, setHidePassword] = useState(true);
 
+        const [message, setMessage] = useState();
+        const [messageType, setMessageType] = useState();
+
+        const handleSignup = (credentials, setSubmitting) => {
+            handleMessage(null);
+            const url = 'https://shielded-escarpment-20777.herokuapp.com/user/signup'
+
+            axios.post(url, credentials).then((response)=> {
+                const result = response.data;
+                const {message, status, data} = result;
+
+              if(status !== 'SUCCESS'){
+                  handleMessage(message, status);
+              } else{
+                  navigation.navigate('Home', {...data});
+              }
+              setSubmitting(false);
+            })
+            .catch(error =>{
+                console.log(error.JSON());
+                setSubmitting(false);
+                handleMessage(" Ocorreu um erro. Verifique sua conexão e tente novamente");
+            })
+        }
+    const handleMessage = (message, type = 'FAILED') => {
+        setMessage(message);
+        setMessage(type);
+    };
+
     return(
         <StyledContainer>
             <InnerContainer>
@@ -47,11 +76,21 @@ const SignUp = ({navigation}) => {
 
 
                 <Formik
-                    initialValues={{email:'', fullName:'', cpf:'', password: '', confirmPassword:''}}
-                    onSumit={(values) => {
-                        console.log(values);
+                    initialValues={{email:'', name:'', cpf:'', password: '', confirmPassword:''}}
+                    onSumit={(values, {setSubmitting}) => {
+                        if (values.email == '' || values.name == '' || values.cpf == '' || values.password == '' || 
+                        values.confirmPassword == ''){
+                            handleMessage('Preencha todos os campos, por favor.');
+                            setSubmitting(false);
+                        } else if(values.password !== values.confirmPassword){
+                            handleMessage('Senhas não correspondem');
+                            setSubmitting(false);
+                        }
+                        else{
+                            handleSignup(values, setSubmitting);
+                        }
                     }}
-                >{({handleChange, handleBlur, handleSubmit, values}) => (<StyledFormArea>
+                >{({ handleChange, handleSubmit, values, isSubmitting }) => (<StyledFormArea>
                     <MyTextInput 
                         label=" E-mail"
                         icon="mail"
@@ -68,9 +107,9 @@ const SignUp = ({navigation}) => {
                         icon="person"
                         placeholder="Ana Chaves"
                         placeholderTextColor={darkLight}
-                        onChangeText={handleChange('fullName')}
-                        onBlur={handleChange('fullName')}
-                        value = {values.fullName}
+                        onChangeText={handleChange('name')}
+                        onBlur={handleChange('name')}
+                        value = {values.name}
                     />
 
                     <MyTextInput 
@@ -110,11 +149,14 @@ const SignUp = ({navigation}) => {
                         hidePassword={hidePassword}
                         setHidePassword={setHidePassword}
                     />
-                    <StyledButton onPress={() => navigation.navigate('Welcome')}>
+                    <MsgBox type={messageType}>{message}</MsgBox>
+                    {!isSubmitting &&(
+                    <StyledButton onPress={handleSubmit}>
                         <ButtonText>
                             Entrar
                         </ButtonText>
                     </StyledButton>
+                    )}
                     
                     <ExtraView>
                         <ExtraText> Já possui uma conta?</ExtraText>
