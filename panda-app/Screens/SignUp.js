@@ -157,12 +157,6 @@ const SignUp = ({navigation}) => {
                         </ButtonText>
                     </StyledButton>
                     )}
-
-                    {isSubmitting &&(
-                    <StyledButton disable={true}>
-                        <ActivityIndicator size="large" color={primary}/>
-                    </StyledButton>
-                    )}
                     
                     <ExtraView>
                         <ExtraText> Já possui uma conta?</ExtraText>
