@@ -2,10 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import {
   View,
   ScrollView,
-  Text,
   StyleSheet,
   StatusBar,
-  Image,
   Animated,
 } from "react-native";
 

@@ -13,36 +13,37 @@ const ProgressRing = () => {
     <View style={styles.conteiner}>
       <View style={styles.progressRing}>
         <AnimatedCircularProgress
+          duration={1500}
           style={styles.lines}
           // rotation={0}
-          size={180}
-          width={18}
+          size={170}
+          width={16}
           fill={35}
           lineCap={"round"}
           tintColor="#B24FBD"
-          onAnimationComplete={() => console.log("onAnimationComplete")}
           backgroundColor="#2C1430"
         />
         <AnimatedCircularProgress
+          duration={1500}
           style={styles.lines}
           // rotation={0}
-          size={120}
-          width={18}
+          size={115}
+          width={16}
           fill={60}
           lineCap={"round"}
           tintColor="#fccb00"
-          onAnimationComplete={() => console.log("onAnimationComplete")}
           backgroundColor="#5A4D14"
         />
         <AnimatedCircularProgress
+          duration={1500}
           style={styles.lines}
           // rotation={0}
           size={60}
-          width={18}
+          width={16}
           fill={20}
           lineCap={"round"}
           tintColor="#00e0ff"
-          onAnimationComplete={() => console.log("onAnimationComplete")}
+
           backgroundColor="#0B5863"
         />
       </View>
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     width: "100%",
     flexDirection: "row",
-    top: 90,
+    top: 115,
     padding: 25,
   },
   progressRing: {
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   legendText: {
-    fontSize: 16,
+    fontSize: 14,
     marginLeft: 10,
     color: "#fff",
   },

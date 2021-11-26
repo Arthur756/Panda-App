@@ -88,7 +88,7 @@ const RootStack = () => {
                 <Stack.Screen 
                     name="Reports" 
                     component={Reports}
-                    options={headerStyle}
+                    options={headerStyleWhite}
                 />
             </Stack.Navigator>
         </NavigationContainer>

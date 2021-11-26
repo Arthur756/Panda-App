@@ -10,7 +10,7 @@ import {
   TextInput,
   FlatList,
   Image,
-  Animated
+  Animated,
 } from "react-native";
 
 // Bibliotecas
@@ -25,6 +25,32 @@ import SearchBarTarget from "../Components/SearchBarTarget";
 import wave from "../assets/profile-wave.png";
 
 const Targets = ({ navigation }) => {
+  const fadeText = useRef(new Animated.Value(0)).current;
+  const fadeBtn = useRef(new Animated.Value(0)).current;
+  const animatedValue = useRef(new Animated.Value(850)).current;
+
+  useEffect(
+    () =>
+      Animated.timing(fadeText, {
+        toValue: 1,
+        duration: 1600,
+        useNativeDriver: true,
+      }).start(),
+    Animated.timing(fadeBtn, {
+      toValue: 1,
+      delay: 400,
+      duration: 800,
+      useNativeDriver: true,
+    }).start(),
+    Animated.spring(animatedValue, {
+      toValue: 0,
+      speed: 1,
+      // delay: 1000,
+      bounciness: 4,
+      useNativeDriver: true,
+    }).start()
+  );
+
   const [modalVisible, setModalVisible] = useState(false);
 
   const [targetTitle, setTargetTitle] = useState("");
@@ -123,7 +149,7 @@ const Targets = ({ navigation }) => {
     <View style={[styles.main]}>
       <StatusBar barStyle="light-content" backgroundColor="#fff" />
       <Image source={wave} style={styles.wave}></Image>
-      <View style={styles.background}></View>
+      {/* <View style={styles.background}></View> */}
       <Modal
         animationType="fade"
         transparent={true}
@@ -169,43 +195,47 @@ const Targets = ({ navigation }) => {
         </View>
       </Modal>
 
-      <View style={[styles.header]}>
+      <Animated.View style={[styles.header, { opacity: fadeText }]}>
         <View style={[styles.header_top]}>
           <Text style={[styles.textTitle]}>Suas Metas</Text>
         </View>
         <View style={styles.headerConteiner}>
-            <Text style={[styles.textPoupanca]}>Total em Metas</Text>
-            <Text style={[styles.textSaldo]}>R$ {sumTargets}</Text>
-          
+          <Text style={[styles.textPoupanca]}>Total em Metas</Text>
+          <Text style={[styles.textSaldo]}>R$ {sumTargets}</Text>
         </View>
-      </View>
-      {/* <ProfileIcon navigation={navigation} /> */}
+      </Animated.View>
 
-      <View style={[styles.headerMetas]}>
-        <SearchBarTarget width={86}/>
-        <TouchableOpacity style={styles.gridBtn}>
-          <Icon name="th-large" size={25} color={"#fff"}></Icon>
-        </TouchableOpacity>
-        {/* <Text style={[styles.textFiltro]}>Filtro</Text> */}
-      </View>
-      <ScrollView
-        style={[styles.targets]}
-        showsHorizontalScrollIndicator={false}
+      <Animated.View
+        style={[
+          styles.targetsConteiner,
+          { transform: [{ translateY: animatedValue }] },
+        ]}
       >
-        <FlatList
-          style={[styles.targetsList]}
-          data={targetList}
-          renderItem={renderItem}
-          keyExtractor={(item, index) => index.toString()}
+        <View style={styles.headerMetas}>
+          <SearchBarTarget width={86} />
+          <TouchableOpacity style={styles.gridBtn}>
+            <Icon name="th-large" size={25} color={"#fff"}></Icon>
+          </TouchableOpacity>
+          {/* <Text style={[styles.textFiltro]}>Filtro</Text> */}
+        </View>
+        <ScrollView
+          style={[styles.targets]}
           showsHorizontalScrollIndicator={false}
-        ></FlatList>
-      </ScrollView>
-      <TouchableOpacity
-        style={styles.createTargetBtn}
-        onPress={() => setModalVisible(true)}
-      >
-        <Icon name="plus" size={35} color={"#fff"}></Icon>
-      </TouchableOpacity>
+        >
+          <FlatList
+            style={[styles.targetsList]}
+            data={targetList}
+            renderItem={renderItem}
+            keyExtractor={(item, index) => index.toString()}
+            showsHorizontalScrollIndicator={false}
+          ></FlatList>
+        </ScrollView>
+      </Animated.View>
+      <Animated.View style={[styles.createTargetBtn, { opacity: fadeBtn }]}>
+        <TouchableOpacity onPress={() => setModalVisible(true)}>
+          <Icon name="plus" size={35} color={"#fff"}></Icon>
+        </TouchableOpacity>
+      </Animated.View>
     </View>
   );
 };
@@ -369,16 +399,18 @@ const styles = StyleSheet.create({
     marginLeft: "auto",
   },
 
-
   // Targets //
+  targetsConteiner: {
+    width: "100%",
+  },
   targets: {
     height: "100%",
-    backgroundColor: '#2DB071',
+    backgroundColor: "#2DB071",
     // paddingBottom: 70,
   },
   targetsList: {
     paddingHorizontal: 25,
-    backgroundColor: '#2DB071',
+    backgroundColor: "#2DB071",
     marginBottom: 75,
     paddingTop: 25,
   },
@@ -403,7 +435,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4,
     shadowRadius: 7,
   },
-  
 });
 
 export default Targets;
