@@ -5,13 +5,15 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
  
-// Telas
+// Screens
 import Login from './../Screens/Login'
 import SignUp from './../Screens/SignUp';
 import Profile from '../Screens/Profile';
 import Home from './../Screens/Home';
 import Targets from './../Screens/Targets';
 import Reports from './../Screens/Reports';
+import Wallet from './../Screens/Wallet';
+
 const Stack = createNativeStackNavigator();
 
 const MyTheme ={
@@ -90,6 +92,12 @@ const RootStack = () => {
                     component={Reports}
                     options={headerStyle}
                 />
+                 <Stack.Screen 
+                    name="Wallet" 
+                    component={Wallet}
+                    options={headerStyle}
+                />
+
             </Stack.Navigator>
         </NavigationContainer>
     )

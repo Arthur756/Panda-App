@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 26,
     fontWeight: "700",
-    marginTop: -10,
+    marginTop: 0,
   },
 });
 
