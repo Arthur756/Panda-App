@@ -12,7 +12,7 @@
 
 - Clone this repository
 - Enter the folder
-- Open this project in your Xcode
+- Open this project in your editor code
 
 ## 👨🏻‍💻 Authors
 
