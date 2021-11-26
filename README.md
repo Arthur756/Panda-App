@@ -14,12 +14,12 @@
 - Enter the folder
 - Open this project in your Xcode
 
-## 👨🏻‍💻 Author
+## 👨🏻‍💻 Authors
 
 - [Lucas Newlands](https://github.com/newlandslucas)
 - [Vitor M. Almeida](https://github.com/vitoalmeida)
 - [Arthur Belfort](https://github.com/Arthur756)
 - [Gabriel Terry](https://github.com/Axpower22)
-- 
+
 
 
