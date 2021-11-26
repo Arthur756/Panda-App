@@ -2,10 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import {
   View,
   ScrollView,
-  Text,
   StyleSheet,
   StatusBar,
-  Image,
   Animated,
 } from "react-native";
 
@@ -85,7 +83,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontSize: 26,
     fontWeight: "700",
-    marginTop: -10,
+    marginTop: 0,
   },
 });
 

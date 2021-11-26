@@ -1,3 +1,25 @@
-# Panda-App
+<h3 align="center">
+  Panda App
+</h3>
 
-![panda](https://github.com/Arthur756/Panda-App/blob/0434ceea6eb45d781ac44964a47c7d6bb5181149/panda_logo.png)
+## 💻 Technologies
+
+- [React Native](https://reactnative.dev)
+- [React Navigation](https://reactnavigation.org)
+- [Expo](https://expo.dev)
+
+## ⌨️ Installation and execution
+
+- Clone this repository
+- Enter the folder
+- Open this project in your editor code
+
+## 👨🏻‍💻 Authors
+
+- [Lucas Newlands](https://github.com/newlandslucas)
+- [Vitor M. Almeida](https://github.com/vitoalmeida)
+- [Arthur Belfort](https://github.com/Arthur756)
+- [Gabriel Terry](https://github.com/Axpower22)
+
+
+

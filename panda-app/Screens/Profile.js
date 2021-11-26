@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Modal,
   Animated,
+  Dimensions,
 } from "react-native";
 
 // Bibliotecas
@@ -20,6 +21,8 @@ import wave from "../assets/profile-wave.png";
 import FieldTextInput from "../Components/FieldTextInput";
 
 const Profile = ({ navigation }) => {
+  const screenHeight = Dimensions.get("window").height * 0.17;
+
   const [completed, setCompleted] = useState(35);
   const [modalVisible, setModalVisible] = useState(false);
   const animatedValue = useRef(new Animated.Value(500)).current;
@@ -101,8 +104,8 @@ const Profile = ({ navigation }) => {
           { transform: [{ translateY: animatedValue }] },
         ]}
       ></Animated.Image>
-      <Animated.View style={[styles.conteiner, {opacity: fadeProfile}]}> 
-        <View style={styles.profileConteiner}>
+      <Animated.View style={[styles.conteiner, { opacity: fadeProfile }]}>
+        <View style={[styles.profileConteiner, { marginTop: screenHeight }]}>
           <Image
             style={styles.profile}
             source={require("../assets/perfil1.jpg")}
@@ -192,7 +195,6 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
 
-
   // Main //
   main: {
     backgroundColor: "#070707",
@@ -223,7 +225,6 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     borderRadius: 250,
-    marginTop: 150,
     justifyContent: "center",
     alignItems: "center",
     shadowColor: "#000",

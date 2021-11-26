@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
 // Bibliotecas
 import { Dimensions } from "react-native";
-const screenWidth = Dimensions.get("window").width -10;
+const screenWidth = Dimensions.get("window").width -80;
 
 import {
   LineChart
@@ -13,22 +13,22 @@ const BezierChart = () => {
   
   // Configuração do Bezier Chart
   const data = {
-    labels: ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"],
+    labels: ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"],
     datasets: [
       {
         data: [20, 45, 28, 80, 99, 43,80],
         color: () => `#fccb00`, // optional
-        strokeWidth: 2, // optional
+        strokeWidth: 2.6, // optional
       },
       {
-        data: [10, 25, 18, 50, 78, 23, 40],
+        data: [10, 25, 18, 50, 74, 23, 40],
         color: () => `#00e0ff`, // optional
-        strokeWidth: 2, // optional
+        strokeWidth: 2.6, // optional
       },
       {
-        data: [80, 40, 10, 20, 80, 15, 12],
+        data: [80, 40, 10, 20, 85, 15, 12],
         color: () => `#B24FBD`, // optional
-        strokeWidth: 2, // optional
+        strokeWidth: 2.6, // optional
       }
     ],
     //legend: ["Lanches","Viagens", "Compras"] // optional
@@ -37,29 +37,24 @@ const BezierChart = () => {
   return (
     <View style={styles.conteiner}>
       <LineChart
+        style={styles.chart}
         data={data}
         width={screenWidth}
-        height={235}
+        height={200}
         fromZero={true}
-        withShadow={true}
-        withVerticalLabels={false}
-        withHorizontalLabels={true}
-        verticalLabelRotation={30}
         segments={6}
-        withOuterLines={true}
-        withInnerLines={true}
         chartConfig={{
           backgroundGradientFrom: "#00000000",
           backgroundGradientTo: "#00000000",
           decimalPlaces: 2, // optional, defaults to 2dp
-          color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-          labelColor: () => `#eee`,
+          color: (opacity = 1) => `#DDD`,
+          labelColor: () => `#AAA`,
           style: {
-            borderRadius: 16
+            borderRadius: 16,
           },
           propsForDots: {
-            r: "5",
-            strokeWidth: "0",
+            r: "6",
+            strokeWidth: "1.5",
             stroke: "#fff"
           }
         }}
@@ -71,7 +66,23 @@ const BezierChart = () => {
 
 const styles = StyleSheet.create({
   conteiner: {
-    paddingRight: 5,
+    marginTop: 15,
+    width: "100%",
+    paddingHorizontal: 30,
+  },
+  chart: {
+    backgroundColor: "#FFF",
+    paddingRight: 25,
+    paddingTop: 25,
+    paddingBottom: 15,
+    borderRadius: 22,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 15,
   }
 })
 export default BezierChart;
