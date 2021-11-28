@@ -5,7 +5,6 @@ import {View} from 'react-native';
 
 const StatusBarHeight = Constants.statusBarHeight;
 
-
 //colors
 export const Colors = {
     primary:"#fff",
@@ -55,10 +54,7 @@ export const Avatar = styled.Image`
     border-color: ${secondary};
     margin-bottom: 10px;
     margin-top: 10px;
-
 `;
-
-
 
 export const PageTitle = styled.Text`
     font-size: 30px;
@@ -66,6 +62,7 @@ export const PageTitle = styled.Text`
     font-weight: bold;
     color: ${brand};
     padding: 10px;
+    margin-bottom: 2rem;
 
     ${(props) => props.welcome &&`
         font-size: 20px;
@@ -167,6 +164,7 @@ export const ButtonText = styled.Text`
 export const MsgBox = styled.Text`
     text-align: center;
     font-size: 13px;
+    color: ${props => (props.type == 'SUCCESS'? brand : btnred)};
 `;
 
 export const ExtraView = styled.View`
