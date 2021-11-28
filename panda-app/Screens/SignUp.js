@@ -43,7 +43,7 @@ const SignUp = ({navigation}) => {
 
         const handleSignup = (credentials, setSubmitting) => {
             handleMessage(null);
-            const url = 'https://shielded-escarpment-20777.herokuapp.com/user/signup'
+            const url = 'https://shielded-escarpment-20777.herokuapp.com/User/signup'
 
             axios.post(url, credentials).then((response)=> {
                 const result = response.data;
