@@ -32,7 +32,7 @@ const Wallet = () => {
                                     <Text style={styles.SubcardTitle}>Minhas Chaves</Text>
                                 </View>
                                 <View style={styles.Subcard}>
-                                    <Text style={styles.SubcardTitle}>Transferir</Text>
+                                    <Text style={styles.SubcardTitle} onPress={() => {console.log()}}>Transferir</Text>
                                 </View>
                                 <View style={styles.Subcard}>
                                     <Text style={styles.SubcardTitle}>Receber</Text>
