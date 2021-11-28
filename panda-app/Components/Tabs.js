@@ -39,7 +39,7 @@ const Tabs = ({ navigation }) => {
         <TouchableOpacity
           style={styles.tab}
           onPress={() => {
-            navigation.navigate("");
+            navigation.navigate("Simulator");
           }}
         >
           <Image

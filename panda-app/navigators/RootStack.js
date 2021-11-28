@@ -13,6 +13,7 @@ import Home from './../Screens/Home';
 import Targets from './../Screens/Targets';
 import Reports from './../Screens/Reports';
 import Wallet from './../Screens/Wallet';
+import Simulator from './../Screens/Simulator';
 
 const Stack = createNativeStackNavigator();
 
@@ -95,6 +96,11 @@ const RootStack = () => {
                  <Stack.Screen 
                     name="Wallet" 
                     component={Wallet}
+                    options={headerStyle}
+                />
+                <Stack.Screen 
+                    name="Simulator" 
+                    component={Simulator}
                     options={headerStyle}
                 />
 
