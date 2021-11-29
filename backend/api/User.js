@@ -129,7 +129,7 @@ router.post('/signin', (req, res) =>{
                 .catch(err => {
                     res.json({
                         status: "FAILED",
-                        message: "Um erro ocorreu ao comparar a senha inserida com a do banco."
+                        message: `${senha}/ Um erro ocorreu ao comparar a senha inserida com a do banco.`
                     })
                 })
             } else {
