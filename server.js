@@ -8,9 +8,6 @@ const UserRouter = require('./backend/api/User');
 
 // Para aceitar posteriormente dados de form
 const bodyParser = require('express').json;
-app.use(bodyParser());
-
-app.use('/user', UserRouter)
 
 // Enable CORS
 app.use(function (req, res, next) {
@@ -19,6 +16,10 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     next();
 });
+app.use(bodyParser());
+
+app.use('/user', UserRouter)
+
 
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
