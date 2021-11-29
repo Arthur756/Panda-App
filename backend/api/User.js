@@ -95,8 +95,8 @@ router.post('/signup', (req, res) =>{
 //Signin
 router.post('/signin', (req, res) =>{
     let {email, senha} = req.body;
-    email = email; //.trim();
-    senha = senha; //.trim();
+    email = email.toString(); //.trim();
+    senha = senha.toString(); //.trim();
 
     if (email == "" || senha == ""){
         res.json({
