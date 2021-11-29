@@ -10,10 +10,10 @@ const bcrypt = require('bcrypt');
 //Signup
 router.post('/signup', (req, res) =>{
     let {nome, email, senha, cpf} = req.body;
-    nome = nome.trim();
-    email = email.trim();
-    senha = senha.trim();
-    cpf = cpf.trim();
+    nome = nome; //.trim();
+    email = email; //.trim();
+    senha = senha; //.trim();
+    cpf = cpf; //.trim();
 
     if (nome == "" || email == "" || senha == "" || cpf == ""){
         res.json({
@@ -95,8 +95,8 @@ router.post('/signup', (req, res) =>{
 //Signin
 router.post('/signin', (req, res) =>{
     let {email, senha} = req.body;
-    email = email.trim();
-    senha = senha.trim();
+    email = email; //.trim();
+    senha = senha; //.trim();
 
     if (email == "" || senha == ""){
         res.json({

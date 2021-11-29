@@ -31,6 +31,8 @@ import {
 
 import {View} from 'react-native';
 
+//API Client
+import axios from "react-native-axios";
 //colors
 const {brand, darkLight, primary} = Colors;
 
@@ -57,7 +59,7 @@ const SignUp = ({navigation}) => {
               setSubmitting(false);
             })
             .catch(error =>{
-                console.log(error.JSON());
+                console.log(error);
                 setSubmitting(false);
                 handleMessage(" Ocorreu um erro. Verifique sua conexão e tente novamente");
             })
