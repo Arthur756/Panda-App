@@ -43,7 +43,7 @@ const Login = ({ navigation }) => {
   const [messageType, setMessageType] = useState();
 
   const handleLogin = (credentials, setSubmitting) => {
-    // handleMessage(null);
+    handleMessage(null);
     const url = "https://shielded-escarpment-20777.herokuapp.com/User/signin";
     console.log(credentials);
     axios
@@ -51,7 +51,7 @@ const Login = ({ navigation }) => {
       .then((response) => {
         const result = response.data;
         const { message, status, data } = result;
-
+        console.log(response);
         if (status !== "SUCCESS") {
           handleMessage(message, status);
         } else {
