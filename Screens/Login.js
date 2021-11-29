@@ -83,24 +83,24 @@ const Login = ({ navigation }) => {
     setMessageType(type);
   };
 
-  const next = {
-    position: "absolute",
-    width: 50,
-    height: 50,
-    right: 0,
-    bottom: 0,
-    justifyContent: "center",
-    alignItems: "center",
-  };
+//   const next = {
+//     position: "absolute",
+//     width: 50,
+//     height: 50,
+//     right: 0,
+//     bottom: 0,
+//     justifyContent: "center",
+//     alignItems: "center",
+//   };
 
   return (
     <StyledContainer>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={next}
         onPress={() => navigation.navigate("Home")}
       >
         <Icon name="chevron-right" size={20} color={"#555"}></Icon>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <InnerContainer>
         <PageLogo
           realizeMode="cover"

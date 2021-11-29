@@ -9,11 +9,11 @@ const bcrypt = require('bcrypt');
 
 //Signup
 router.post('/signup', (req, res) =>{
-    let {nome, email, senha, cpf} = req.body;
-    nome = nome; //.trim();
-    email = email; //.trim();
-    senha = senha; //.trim();
-    cpf = cpf; //.trim();
+    // let {nome, email, senha, cpf} = req.body;
+    nome = req.body.nome; //.trim();
+    email = req.body.email; //.trim();
+    senha = req.body.senha; //.trim();
+    cpf = req.body.cpf; //.trim();
 
     if (nome == "" || email == "" || senha == "" || cpf == ""){
         res.json({
@@ -33,7 +33,7 @@ router.post('/signup', (req, res) =>{
     } else if (cpf.toString().length != 11 || /^(\d)\1{10}$/.test(cpf)){
         res.json({
             status: "FAILED",
-            message: "Entrada de cpf inválido!"
+            message: "Entrada de CPF inválido!"
         })
     } else if (senha.length < 8) {
         res.json({
