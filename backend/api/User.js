@@ -35,7 +35,7 @@ router.post('/signup', (req, res) =>{
             status: "FAILED",
             message: "Entrada de CPF inválido!"
         })
-    } else if (senha.length < 8) {
+    } else if (senha.toString().length < 8) {
         res.json({
             status: "FAILED",
             message: "Senha muito curta!"
