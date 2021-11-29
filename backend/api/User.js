@@ -94,9 +94,9 @@ router.post('/signup', (req, res) =>{
 })
 //Signin
 router.post('/signin', (req, res) =>{
-    let {email, senha} = req.body;
-    email = email; //.trim();
-    senha = senha; //.trim();
+    // let {email, senha} = req.body;
+    email = req.body.email; //.trim();
+    senha = req.body.password; //.trim();
 
     if (email == "" || senha == ""){
         res.json({
@@ -129,7 +129,7 @@ router.post('/signin', (req, res) =>{
                 .catch(err => {
                     res.json({
                         status: "FAILED",
-                        message: `${req, '/', req.body,'/', req.body.email, '-' , req.body.password}/ Um erro ocorreu ao comparar a senha inserida com a do banco.`
+                        message: `Um erro ocorreu ao comparar a senha inserida com a do banco.`
                     })
                 })
             } else {
