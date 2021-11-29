@@ -47,7 +47,7 @@ const Login = ({navigation}) => {
 
         const handleLogin = (credentials, setSubmitting) => {
             handleMessage(null);
-            const url = 'https://shielded-escarpment-20777.herokuapp.com/User/signin'
+            const url = 'https://shielded-escarpment-20777.herokuapp.com/user/signin'
 
             axios.post(url, credentials).then((response)=> {
                 const result = response.data;
@@ -89,10 +89,9 @@ const Login = ({navigation}) => {
                 <PageTitle> Panda </PageTitle>
                 <Subtitle> Login </Subtitle>
 
-
                 <Formik
                     initialValues={{email:'', password: ''}}
-                    onSumit={(values, {setSubmitting}) => {
+                    onSubmit={(values, {setSubmitting}) => {
                         if (values.email == '' || values.password == ''){
                             handleMessage('Preencha todos os campos, por favor.');
                             setSubmitting(false);
