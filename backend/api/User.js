@@ -12,7 +12,7 @@ router.post('/signup', (req, res) =>{
     // let {nome, email, senha, cpf} = req.body;
     nome = req.body.nome; //.trim();
     email = req.body.email; //.trim();
-    senha = req.body.senha; //.trim();
+    senha = req.body.password; //.trim();
     cpf = req.body.cpf; //.trim();
 
     if (nome == "" || email == "" || senha == "" || cpf == ""){
@@ -35,7 +35,7 @@ router.post('/signup', (req, res) =>{
             status: "FAILED",
             message: "Entrada de CPF inválido!"
         })
-    } else if (senha.toString().length < 8) {
+    } else if (senha.length < 8) {
         res.json({
             status: "FAILED",
             message: "Senha muito curta!"
