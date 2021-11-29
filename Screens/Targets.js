@@ -218,10 +218,10 @@ const Targets = ({ navigation }) => {
           </TouchableOpacity>
           {/* <Text style={[styles.textFiltro]}>Filtro</Text> */}
         </View>
-        <ScrollView
+        {/* <ScrollView
           style={styles.targets}
           showsHorizontalScrollIndicator={false}
-        >
+        > */}
           <FlatList
             style={styles.targetsList}
             data={targetList}
@@ -229,7 +229,7 @@ const Targets = ({ navigation }) => {
             keyExtractor={(item, index) => index.toString()}
             showsHorizontalScrollIndicator={false}
           ></FlatList>
-        </ScrollView>
+        {/* </ScrollView> */}
       </Animated.View>
       <Animated.View style={[styles.createTargetBtn, { opacity: fadeBtn }]}>
         <TouchableOpacity onPress={() => setModalVisible(true)}>
@@ -319,27 +319,13 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     // paddingLeft: 25,
     // paddingRight: 25,
-    paddingTop: 25,
     // backgroundColor: "pink"
   },
-
-  // Background //
-  // background: {
-  //   position: "absolute",
-  //   bottom: 0,
-  //   left: 0,
-  //   backgroundColor: "#2DB071",
-  //   borderTopRightRadius: 28,
-  //   borderTopLeftRadius: 28,
-  //   width: "100%",
-  //   height: 600,
-  //   flex: 1,
-  // },
 
   // Header //
   header: {
     flexDirection: "column",
-    marginTop: 10,
+    marginTop: "auto",
     justifyContent: "flex-end",
     paddingHorizontal: 25,
   },
@@ -370,6 +356,8 @@ const styles = StyleSheet.create({
     color: "#ddd",
     fontSize: 24,
   },
+  
+  // Targets //
   headerMetas: {
     zIndex: 1,
     marginTop: 16,
@@ -398,21 +386,20 @@ const styles = StyleSheet.create({
   gridBtn: {
     marginLeft: "auto",
   },
-
-  // Targets //
   targetsConteiner: {
     width: "100%",
   },
   targets: {
-    height: "100%",
+    // height: "100%",
     backgroundColor: "#2DB071",
-    // paddingBottom: 70,
   },
   targetsList: {
+    // height: "100%",
     paddingHorizontal: 25,
     backgroundColor: "#2DB071",
-    marginBottom: 75,
+    paddingBottom: 85,
     paddingTop: 25,
+    height: 550,
   },
 
   // Button
