@@ -64,7 +64,7 @@ const SignUp = ({navigation}) => {
         }
     const handleMessage = (message, type = 'FAILED') => {
         setMessage(message);
-        setMessage(type);
+        setMessageType(type);
     };
 
     return(
@@ -77,7 +77,7 @@ const SignUp = ({navigation}) => {
 
                 <Formik
                     initialValues={{email:'', name:'', cpf:'', password: '', confirmPassword:''}}
-                    onSumit={(values, {setSubmitting}) => {
+                    onSubmit={(values, {setSubmitting}) => {
                         if (values.email == '' || values.name == '' || values.cpf == '' || values.password == '' || 
                         values.confirmPassword == ''){
                             handleMessage('Preencha todos os campos, por favor.');

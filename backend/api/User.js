@@ -95,9 +95,8 @@ router.post('/signup', (req, res) =>{
 //Signin
 router.post('/signin', (req, res) =>{
     let {email, senha} = req.body;
-    console.log(email, senha);
-    email = email; //.trim();
-    senha = senha; //.trim();
+    email = email.trim();
+    senha = senha.trim();
 
     if (email == "" || senha == ""){
         res.json({
@@ -108,7 +107,7 @@ router.post('/signin', (req, res) =>{
         // Checar se o usuário existe
         User.find({email})
         .then (data => {
-            if (data.length){
+            if (data){
                 // Usuário existe
 
                 const hashedSenha = data[0].senha;
