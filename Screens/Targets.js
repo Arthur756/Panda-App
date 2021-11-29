@@ -44,7 +44,7 @@ const Targets = ({ navigation }) => {
     }).start(),
     Animated.spring(animatedValue, {
       toValue: 0,
-      speed: 1,
+      speed: 5,
       // delay: 1000,
       bounciness: 4,
       useNativeDriver: true,

@@ -51,7 +51,6 @@ const Login = ({ navigation }) => {
       .then((response) => {
         const result = response.data;
         const { message, status, data } = result;
-        console.log(response);
         if (status !== "SUCCESS") {
           handleMessage(message, status);
         } else {

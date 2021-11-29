@@ -12,42 +12,50 @@ import Card from "../Components/Card";
 import ProfileIcon from "../Components/ProfileIcon";
 import Tabs from "../Components/Tabs.js";
 
-const Home = ({ navigation }) => {
+const Home = ({ route, navigation }) => {
   const [hidePassword, setHidePassword] = useState(false);
 
   const fadeText = useRef(new Animated.Value(0)).current;
   const fadeTitle = useRef(new Animated.Value(0)).current;
   const animatedValue = useRef(new Animated.Value(500)).current;
 
-  useEffect(() =>
-    Animated.timing(fadeText, {
-      toValue: 1,
-      duration: 1200,
-      useNativeDriver: true
-    }).start(),
+  const user = route.params;
+
+  useEffect(
+    () =>
+      Animated.timing(fadeText, {
+        toValue: 1,
+        duration: 1200,
+        useNativeDriver: true,
+      }).start(),
     Animated.timing(fadeTitle, {
       toValue: 1,
       duration: 1800,
-      useNativeDriver: true
+      useNativeDriver: true,
     }).start(),
     Animated.timing(animatedValue, {
       toValue: 1,
       duration: 1000,
-      useNativeDriver: true
+      useNativeDriver: true,
     }).start()
   );
 
   return (
     <ScrollView style={styles.main}>
       <StatusBar barStyle="light-content" backgroundColor="#fff" />
-      <Animated.View style={[styles.background, {transform: [{ translateY: animatedValue }]}]}></Animated.View>
+      <Animated.View
+        style={[
+          styles.background,
+          { transform: [{ translateY: animatedValue }] },
+        ]}
+      ></Animated.View>
       <View style={styles.header}>
-        <ProfileIcon navigation={navigation} />
+        <ProfileIcon navigation={route, navigation} />
         <Animated.Text style={[styles.headerText, { opacity: fadeText }]}>
           Olá,
         </Animated.Text>
         <Animated.Text style={[styles.headerTitle, { opacity: fadeTitle }]}>
-          Ana Chaves
+          {user.nome}
         </Animated.Text>
       </View>
       <Card />

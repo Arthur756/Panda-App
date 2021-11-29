@@ -82,11 +82,11 @@ const Profile = ({ navigation }) => {
             </TouchableOpacity>
             <Text style={styles.modalTxtTitle}>Meus Dados</Text>
             <FieldTextInput field={"Nome"} value={"Ana Chaves"} />
-            <FieldTextInput field={"Email"} value={" anachaves282@gmail.com"} />
+            <FieldTextInput field={"Email"} value={" anachaves@gmail.com"} />
             <FieldTextInput field={"Data de nascimento"} value={""} />
             <FieldTextInput field={"Sexo"} value={"Feminino"} />
             <FieldTextInput field={"Telefone"} value={""} />
-            <FieldTextInput field={"CPF"} value={""} />
+            <FieldTextInput field={"CPF"} value={"12345678910"} />
             <TouchableOpacity
               style={styles.modalSave}
               onPress={() => setModalVisible(false)}
@@ -113,7 +113,7 @@ const Profile = ({ navigation }) => {
         </View>
         <View style={styles.textConteiner}>
           <Text style={styles.text1}>Ana Chaves</Text>
-          <Text style={styles.text2}>anachaves282@gmail.com</Text>
+          <Text style={styles.text2}>anachaves@gmail.com</Text>
         </View>
         <View style={styles.completeRegister}>
           <View style={styles.headerRegister}>

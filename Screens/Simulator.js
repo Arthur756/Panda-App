@@ -15,7 +15,7 @@ const Simulator = () => {
                     </View>
 
                     <View style={styles.ValueWrapper}>
-                        <Text style={styles.Value}>R$ 1.500,00</Text>
+                        <Text style={styles.Value}>R$ 542,00</Text>
                         <TouchableOpacity style={styles.Sum}>
                             <Text style={styles.SumText}>Adicionar</Text>
                         </TouchableOpacity>
