@@ -32,7 +32,7 @@ import {
 import { View, ActivityIndicator } from "react-native";
 
 //API Client
-import axios from "axios";
+import axios from "react-native-axios";
 
 //colors
 const { brand, darkLight, primary } = Colors;
@@ -44,15 +44,15 @@ const Login = ({ navigation }) => {
 
   const handleLogin = (credentials, setSubmitting) => {
     // handleMessage(null);
-    const url = "https://shielded-escarpment-20777.herokuapp.com/user/signin";
-
+    const url = "https://shielded-escarpment-20777.herokuapp.com/User/signin";
+    console.log(credentials);
     axios
       .post(url, credentials)
       .then((response) => {
         const result = response.data;
         const { message, status, data } = result;
 
-        if (status !== 'SUCCESS') {
+        if (status !== "SUCCESS") {
           handleMessage(message, status);
         } else {
           navigation.navigate("Home", { ...data[0] });
@@ -60,13 +60,24 @@ const Login = ({ navigation }) => {
         setSubmitting(false);
       })
       .catch((error) => {
-        console.log(error);
+        axios.interceptors.response.use((response) => {
+            console.log("Response:", JSON.stringify(response, null, 2));
+            return response;
+          });
+        console.log('Erro dado: ', error);
         setSubmitting(false);
         handleMessage(
           " Ocorreu um erro. Verifique sua conexão e tente novamente"
         );
       });
   };
+  axios.interceptors.request.use((request) => {
+    console.log("Starting Request", JSON.stringify(request, null, 2));
+    return request;
+  });
+
+
+
   const handleMessage = (message, type = "FAILED") => {
     setMessage(message);
     setMessageType(type);
